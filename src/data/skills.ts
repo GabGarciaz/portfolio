@@ -31,4 +31,9 @@ export const skills: SkillCategory[] = [
     label: "Design & Marketing",
     tags: ["Canva", "Identidade visual", "Marketing de conteúdo", "Design gráfico"],
   },
+  {
+    id: "video",
+    label: "Vídeo",
+    tags: ["CapCut", "Edição de vídeo", "Ferramentas de IA"],
+  },
 ];

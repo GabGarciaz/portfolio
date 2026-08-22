@@ -21,6 +21,8 @@ export interface Project {
   stack: string[];
   thumbnailColor: string;
   thumbnailSrc?: string;
+  /** Quando presente, o card toca este vídeo em loop no lugar da imagem. */
+  videoSrc?: string;
   href?: string;
 }
 

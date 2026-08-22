@@ -151,7 +151,16 @@ function ProjectCard({
     >
       <div className="relative overflow-hidden rounded-2xl border border-line bg-bg-card shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)]">
         <div className="relative aspect-[16/10] w-full overflow-hidden">
-          {project.thumbnailSrc ? (
+          {project.videoSrc ? (
+            <video
+              src={project.videoSrc}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.04]"
+            />
+          ) : project.thumbnailSrc ? (
             /* eslint-disable-next-line @next/next/no-img-element -- assets locais em /public */
             <img
               src={project.thumbnailSrc}

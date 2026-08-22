@@ -51,4 +51,14 @@ export const projects: Project[] = [
     thumbnailColor: "#6b21a8",
     thumbnailSrc: "/images/projects/arte-milkshake.png",
   },
+  {
+    slug: "edicao-video",
+    name: "Edição de Vídeo",
+    date: "CapCut & IA",
+    summary:
+      "Edição de vídeos de divulgação no CapCut, combinando cortes dinâmicos, legendas e efeitos com ferramentas de IA para acelerar o processo de produção.",
+    stack: ["CapCut", "Edição de vídeo", "Ferramentas de IA"],
+    thumbnailColor: "#1a1a2e",
+    videoSrc: "/images/projects/edicao-video.mp4",
+  },
 ];
