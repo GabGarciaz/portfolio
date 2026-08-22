@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+:root {
+  /* Navy profundo — base */
+  --bg: #04070f;
+  --bg-raise: #080d1c;
+  --bg-card: #0b1226;
+
+  /* Texto */
+  --fg: #eaeefb;
+  --fg-dim: #8b97b8;
+  --fg-faint: #4a5578;
+
+  /* Dourado champagne — a cor premium */
+  --gold: #d9b26a;
+  --gold-bright: #f0d9a0;
+
+  /* Azul elétrico — brilho de apoio */
+  --blue: #2f6bff;
+  --blue-glow: #6d9bff;
+
+  --line: rgba(234, 238, 251, 0.08);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-raise: var(--bg-raise);
+  --color-bg-card: var(--bg-card);
+  --color-fg: var(--fg);
+  --color-fg-dim: var(--fg-dim);
+  --color-fg-faint: var(--fg-faint);
+  --color-gold: var(--gold);
+  --color-gold-bright: var(--gold-bright);
+  --color-blue: var(--blue);
+  --color-blue-glow: var(--blue-glow);
+  --color-line: var(--line);
+  --font-sans: var(--font-archivo);
+  --font-serif: var(--font-fraunces);
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--bg);
+}
+
+/* Scrollbar discreta */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(217, 178, 106, 0.25);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(217, 178, 106, 0.45);
+}
+
+/* Texto que revela por linha — o wrapper esconde o overflow */
+.line-mask {
+  overflow: hidden;
+  display: block;
+}
+
+/* Gradiente dourado em texto */
+.text-gold-gradient {
+  background: linear-gradient(120deg, var(--gold-bright), var(--gold) 45%, #a8823f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Grão sutil sobre a página inteira */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
