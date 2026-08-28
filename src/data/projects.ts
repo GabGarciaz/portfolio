@@ -32,14 +32,24 @@ export const projects: Project[] = [
     thumbnailSrc: "/images/projects/meridiano.webp",
   },
   {
-    slug: "identidade-tere-delivery",
-    name: "Identidade Terê — Delivery",
+    slug: "edicao-video",
+    name: "Edição de Vídeo",
+    date: "CapCut & IA",
+    summary:
+      "Edição de vídeos de divulgação no CapCut, combinando cortes dinâmicos, legendas e efeitos com ferramentas de IA para acelerar o processo de produção.",
+    stack: ["CapCut", "Edição de vídeo", "Ferramentas de IA"],
+    thumbnailColor: "#1a1a2e",
+    videoSrc: "/images/projects/edicao-video.mp4",
+  },
+  {
+    slug: "identidade-tere-divulgacao",
+    name: "Identidade Terê — Divulgação",
     date: "Design & Marketing",
     summary:
-      "Arte de divulgação para o serviço de entrega da loja, com identidade visual e chamada para pedidos pelo WhatsApp e iFood.",
+      "Arte de divulgação da linha de milkshakes, com chamada para pedidos pelo WhatsApp e presença nas redes sociais da loja.",
     stack: ["Canva", "Identidade visual", "Marketing de conteúdo"],
-    thumbnailColor: "#6b21a8",
-    thumbnailSrc: "/images/projects/arte-acai.png",
+    thumbnailColor: "#4a1d5e",
+    thumbnailSrc: "/images/projects/arte-milkshake-produto.jpeg",
   },
   {
     slug: "identidade-tere-milkshake",
@@ -50,15 +60,5 @@ export const projects: Project[] = [
     stack: ["Canva", "Identidade visual", "Marketing de conteúdo"],
     thumbnailColor: "#6b21a8",
     thumbnailSrc: "/images/projects/arte-milkshake.png",
-  },
-  {
-    slug: "edicao-video",
-    name: "Edição de Vídeo",
-    date: "CapCut & IA",
-    summary:
-      "Edição de vídeos de divulgação no CapCut, combinando cortes dinâmicos, legendas e efeitos com ferramentas de IA para acelerar o processo de produção.",
-    stack: ["CapCut", "Edição de vídeo", "Ferramentas de IA"],
-    thumbnailColor: "#1a1a2e",
-    videoSrc: "/images/projects/edicao-video.mp4",
   },
 ];
