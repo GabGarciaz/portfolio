@@ -6,7 +6,7 @@ export const projects: Project[] = [
     name: "Scanner STI",
     date: "Automação com IA",
     summary:
-      "Automação em Python que extrai dados de documentos escaneados usando API de IA multimodal, processando imagens em lote e gravando os resultados em PostgreSQL, com revisão humana antes da confirmação — eliminando a digitação manual foto por foto.",
+      "Automação em Python que extrai dados de documentos escaneados usando API de IA multimodal. Processa as imagens em lote, grava os resultados em PostgreSQL e passa por revisão humana antes da confirmação, acabando com a digitação manual foto por foto.",
     stack: ["Python", "API Claude (Anthropic)", "PostgreSQL"],
     thumbnailColor: "#101a3d",
     thumbnailSrc: "/images/projects/scanner-sti.png",
@@ -17,7 +17,7 @@ export const projects: Project[] = [
     name: "Documentos do Andrews",
     date: "Aplicativo desktop",
     summary:
-      "Aplicativo desktop em Python que vigia a pasta de entrada, lê os PDFs escaneados e extrai os dados de cada documento numa fila de conferência. Depois de aprovados, os registros são lançados direto no banco de dados do TOTVS — fechando o ciclo entre o papel digitalizado e o sistema do colégio.",
+      "Aplicativo desktop em Python que vigia a pasta de entrada, lê os PDFs escaneados e extrai os dados de cada documento numa fila de conferência. Depois de aprovados, os registros são lançados direto no banco de dados do TOTVS, fechando o ciclo entre o papel digitalizado e o sistema do colégio.",
     stack: ["Python", "App desktop", "Extração de PDFs", "TOTVS"],
     thumbnailColor: "#0e1a33",
     thumbnailSrc: "/images/projects/documentos-andrews.png",
@@ -55,7 +55,7 @@ export const projects: Project[] = [
   },
   {
     slug: "identidade-tere-divulgacao",
-    name: "Identidade Terê — Divulgação",
+    name: "Identidade Terê · Divulgação",
     date: "Design & Marketing",
     summary:
       "Arte de divulgação da linha de milkshakes, com chamada para pedidos pelo WhatsApp e presença nas redes sociais da loja.",
@@ -65,7 +65,7 @@ export const projects: Project[] = [
   },
   {
     slug: "identidade-tere-milkshake",
-    name: "Identidade Terê — Milkshake",
+    name: "Identidade Terê · Milkshake",
     date: "Design & Marketing",
     summary:
       "Arte de divulgação da linha de milkshakes, reforçando a identidade visual da marca nos canais de venda e redes sociais.",

@@ -104,7 +104,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="relative flex items-center justify-between border-t border-line py-6 text-[11px] uppercase tracking-[0.2em] text-fg-faint">
+      <div className="relative flex flex-col gap-2 border-t border-line py-6 text-[10px] uppercase tracking-[0.12em] text-fg-faint sm:flex-row sm:items-center sm:justify-between sm:text-[11px] sm:tracking-[0.2em]">
         <span>© {site.copyrightYear} · {site.name.first} Medeiros Garcia</span>
         <span>Rio de Janeiro · Brasil</span>
       </div>

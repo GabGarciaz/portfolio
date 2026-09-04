@@ -64,7 +64,7 @@ export function About() {
             {STATS.map((s) => (
               <div key={s.label} data-stat>
                 <div className="font-serif text-3xl italic text-gold md:text-4xl">{s.value}</div>
-                <div className="mt-2 text-[11px] uppercase leading-snug tracking-[0.15em] text-fg-faint">
+                <div className="mt-2 text-[10px] uppercase leading-snug tracking-[0.06em] text-fg-faint sm:text-[11px] sm:tracking-[0.15em]">
                   {s.label}
                 </div>
               </div>

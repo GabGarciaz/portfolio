@@ -1,7 +1,7 @@
 "use client";
 
-import { Suspense, useRef, useState } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Suspense, useEffect, useRef, useState } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Environment, Lightformer, Float, MeshDistortMaterial } from "@react-three/drei";
 import * as THREE from "three";
 
@@ -127,24 +127,57 @@ function Rig({ children }: { children: React.ReactNode }) {
   return <group ref={group}>{children}</group>;
 }
 
+/**
+ * Enquadra a cena pela proporção da tela. Com FOV fixo, uma viewport em
+ * retrato enxerga uma faixa horizontal estreita e os anéis (raio até 3)
+ * estouram para fora. Aqui a câmera recua o quanto for preciso para caber.
+ */
+function ResponsiveFraming() {
+  const get = useThree((s) => s.get);
+  const size = useThree((s) => s.size);
+
+  useEffect(() => {
+    const cam = get().camera as THREE.PerspectiveCamera;
+    const aspect = size.width / Math.max(size.height, 1);
+    const halfFov = (cam.fov * Math.PI) / 360;
+    // meia-largura visível desejada: raio do maior anel mais uma folga
+    const distance = 4.2 / (Math.tan(halfFov) * Math.max(aspect, 0.3));
+    cam.position.z = Math.min(Math.max(distance, 9.5), 26);
+    cam.updateProjectionMatrix();
+  }, [get, size]);
+
+  return null;
+}
+
+/** Em retrato, desce o conjunto para não ficar exatamente atrás do nome. */
+function VerticalOffset({ children }: { children: React.ReactNode }) {
+  const size = useThree((s) => s.size);
+  const isPortrait = size.width / Math.max(size.height, 1) < 0.9;
+
+  return <group position={[0, isPortrait ? -2 : 0, 0]}>{children}</group>;
+}
+
 function Scene() {
   return (
     <>
+      <ResponsiveFraming />
       <ambientLight intensity={0.35} />
       <spotLight position={[6, 7, 5]} angle={0.4} penumbra={1} intensity={90} color="#ffffff" />
       <pointLight position={[-6, -3, -4]} intensity={40} color="#2f6bff" />
 
-      <Rig>
-        <Float speed={1.5} rotationIntensity={0.35} floatIntensity={0.7}>
-          <Core />
-        </Float>
+      <VerticalOffset>
+        <Rig>
+          <Float speed={1.5} rotationIntensity={0.35} floatIntensity={0.7}>
+            <Core />
+          </Float>
 
-        <Ring radius={2.05} tilt={[Math.PI / 2.4, 0.35, 0]} speed={0.28} color="#d9b26a" />
-        <Ring radius={2.55} tilt={[Math.PI / 1.75, -0.5, 0.4]} speed={-0.2} color="#6d9bff" thickness={0.004} />
-        <Ring radius={3.05} tilt={[Math.PI / 2.9, 0.9, -0.3]} speed={0.14} color="#d9b26a" thickness={0.003} />
+          <Ring radius={2.05} tilt={[Math.PI / 2.4, 0.35, 0]} speed={0.28} color="#d9b26a" />
+          <Ring radius={2.55} tilt={[Math.PI / 1.75, -0.5, 0.4]} speed={-0.2} color="#6d9bff" thickness={0.004} />
+          <Ring radius={3.05} tilt={[Math.PI / 2.9, 0.9, -0.3]} speed={0.14} color="#d9b26a" thickness={0.003} />
 
-        <Dust />
-      </Rig>
+          <Dust />
+        </Rig>
+      </VerticalOffset>
 
       {/* Iluminação de estúdio montada à mão — sem baixar HDRI de CDN externo */}
       <Environment resolution={256}>

@@ -92,7 +92,10 @@ export function Hero() {
           >
             {site.version}
           </span>
-          <nav data-hero-fade className="flex gap-6 text-[11px] uppercase tracking-[0.2em]">
+          <nav
+            data-hero-fade
+            className="flex gap-4 text-[10px] uppercase tracking-[0.12em] sm:gap-6 sm:text-[11px] sm:tracking-[0.2em]"
+          >
             {site.nav.map((item) => (
               <a
                 key={item.label}
@@ -105,14 +108,17 @@ export function Hero() {
           </nav>
         </div>
 
-        <div data-hero-copy className="pointer-events-none relative mx-auto max-w-5xl text-center">
+        <div data-hero-copy className="pointer-events-none relative mx-auto w-full max-w-5xl text-center">
           {/* véu escuro atrás do texto: garante contraste contra o brilho da esfera */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[85vh] w-[130vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-bg/55 blur-[70px]"
+            className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[150%] w-[150%] -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-bg/75 blur-[60px] md:h-[135%] md:w-[125%] md:bg-bg/55"
           />
 
-          <p data-hero-fade className="mb-7 text-[11px] uppercase tracking-[0.35em] text-gold">
+          <p
+            data-hero-fade
+            className="mb-5 text-[10px] uppercase tracking-[0.16em] text-gold sm:tracking-[0.28em] md:mb-7 md:text-[11px] md:tracking-[0.35em]"
+          >
             Desenvolvedor · Automação com IA · Design
           </p>
 
@@ -140,8 +146,11 @@ export function Hero() {
           </p>
         </div>
 
-        <div className="flex items-end justify-between">
-          <div data-hero-fade className="flex gap-5 text-[11px] uppercase tracking-[0.2em]">
+        <div className="flex flex-wrap items-end justify-between gap-x-4 gap-y-3">
+          <div
+            data-hero-fade
+            className="flex gap-4 text-[10px] uppercase tracking-[0.12em] sm:gap-5 sm:text-[11px] sm:tracking-[0.2em]"
+          >
             {site.socials.map((s) => (
               <a
                 key={s.label}
@@ -158,7 +167,7 @@ export function Hero() {
           <a
             data-hero-fade
             href="#projetos"
-            className="group flex items-center gap-3 text-[11px] uppercase tracking-[0.2em] text-fg-dim transition-colors hover:text-gold"
+            className="group flex items-center gap-3 text-[10px] uppercase tracking-[0.12em] text-fg-dim transition-colors hover:text-gold sm:text-[11px] sm:tracking-[0.2em]"
           >
             Ver projetos
             <span className="relative flex h-8 w-8 items-center justify-center rounded-full border border-line transition-colors group-hover:border-gold">

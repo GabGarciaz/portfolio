@@ -88,8 +88,9 @@ export function Projects() {
 
   return (
     <section ref={root} id="projetos" className="relative overflow-hidden bg-bg py-20 md:h-[100svh] md:py-0">
-      {/* Cabeçalho fixo da seção */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-20 flex items-start justify-between px-6 pt-10 md:px-12">
+      {/* No mobile o cabeçalho entra no fluxo (senão cobre o primeiro card);
+          no desktop ele volta a flutuar sobre a trilha fixada. */}
+      <div className="pointer-events-none relative z-20 mb-10 flex items-start justify-between px-6 md:absolute md:inset-x-0 md:top-0 md:mb-0 md:px-12 md:pt-10">
         <div>
           <span className="text-[11px] uppercase tracking-[0.3em] text-gold">Trabalhos</span>
           <h2 className="mt-2 text-2xl font-black md:text-3xl">
