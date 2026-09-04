@@ -23,6 +23,8 @@ export interface Project {
   thumbnailSrc?: string;
   /** Quando presente, o card toca este vídeo em loop no lugar da imagem. */
   videoSrc?: string;
+  /** Amarra dois cards como partes do mesmo sistema (ex.: "Automação STI · 01/02"). */
+  group?: string;
   href?: string;
 }
 

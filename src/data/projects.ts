@@ -10,6 +10,18 @@ export const projects: Project[] = [
     stack: ["Python", "API Claude (Anthropic)", "PostgreSQL"],
     thumbnailColor: "#101a3d",
     thumbnailSrc: "/images/projects/scanner-sti.png",
+    group: "Automação STI · 01 / 02",
+  },
+  {
+    slug: "documentos-andrews",
+    name: "Documentos do Andrews",
+    date: "Aplicativo desktop",
+    summary:
+      "Aplicativo desktop em Python que vigia a pasta de entrada, lê os PDFs escaneados e extrai os dados de cada documento numa fila de conferência. Depois de aprovados, os registros são lançados direto no banco de dados do TOTVS — fechando o ciclo entre o papel digitalizado e o sistema do colégio.",
+    stack: ["Python", "App desktop", "Extração de PDFs", "TOTVS"],
+    thumbnailColor: "#0e1a33",
+    thumbnailSrc: "/images/projects/documentos-andrews.png",
+    group: "Automação STI · 02 / 02",
   },
   {
     slug: "tere-ecommerce",

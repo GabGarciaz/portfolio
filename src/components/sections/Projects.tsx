@@ -183,6 +183,24 @@ function ProjectCard({
         </div>
 
         <div className="p-6 md:p-7">
+          {project.group && (
+            <div className="mb-3 flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-gold/80">
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                width="13"
+                height="13"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              >
+                <path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"></path>
+                <path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"></path>
+              </svg>
+              {project.group}
+            </div>
+          )}
           <h3 className="text-2xl font-bold md:text-3xl">{project.name}</h3>
           <p className="mt-3 max-w-xl text-sm leading-relaxed text-fg-dim">{project.summary}</p>
           <ul className="mt-5 flex flex-wrap gap-2">

@@ -7,7 +7,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { site } from "@/data/site";
 
 const STATS = [
-  { value: "04", label: "Projetos entregues" },
+  { value: "07", label: "Projetos entregues" },
   { value: "IA", label: "Automação de processos" },
   { value: "Full", label: "Stack ponta a ponta" },
 ];
