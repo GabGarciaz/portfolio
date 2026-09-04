@@ -5,6 +5,9 @@
   --bg: #04070f;
   --bg-raise: #080d1c;
   --bg-card: #0b1226;
+  /* mesma cor com alfa 0: um gradiente que termina em `transparent` desbota
+     para preto transparente e suja o meio do caminho */
+  --bg-card-fade: rgb(11 18 38 / 0);
 
   /* Texto */
   --fg: #eaeefb;

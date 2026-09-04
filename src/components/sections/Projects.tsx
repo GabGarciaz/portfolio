@@ -214,7 +214,13 @@ function ProjectCard({
             </div>
           )}
           {/* véu para o texto respirar sobre a imagem */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg-card via-transparent to-transparent" />
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{
+              backgroundImage:
+                "linear-gradient(to top, var(--bg-card) 0%, var(--bg-card-fade) 55%)",
+            }}
+          />
           <span className="absolute left-5 top-5 rounded-full border border-gold/40 bg-bg/70 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-gold backdrop-blur">
             {project.date}
           </span>
@@ -240,7 +246,9 @@ function ProjectCard({
           )}
         </div>
 
-        <div className="p-6 md:p-7">
+        {/* -mt-px e fundo opaco cobrem a linha de 1px que o WebKit deixa na
+            emenda quando a altura da mídia cai em pixel fracionário. */}
+        <div className="relative -mt-px bg-bg-card p-6 md:p-7">
           {project.group && (
             <div className="mb-3 flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-gold/80">
               <svg
