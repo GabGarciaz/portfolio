@@ -54,6 +54,16 @@ export const projects: Project[] = [
     videoSrc: "/images/projects/edicao-video.mp4",
   },
   {
+    slug: "avatar-ia",
+    name: "Avatar com IA",
+    date: "Vídeo para marketing",
+    summary:
+      "Vídeo de divulgação para a Terê Sorvetes com apresentadora gerada por inteligência artificial, do roteiro à edição final. Formato vertical pronto para redes sociais: uma forma de a loja manter conteúdo com apresentador próprio sem depender de gravação, elenco ou estúdio.",
+    stack: ["Avatar com IA", "Geração de vídeo", "CapCut", "Marketing"],
+    thumbnailColor: "#241a3a",
+    videoSrc: "/images/projects/avatar-ia.mp4",
+  },
+  {
     slug: "identidade-tere-divulgacao",
     name: "Identidade Terê · Divulgação",
     date: "Design & Marketing",
