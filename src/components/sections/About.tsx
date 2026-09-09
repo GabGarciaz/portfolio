@@ -99,7 +99,7 @@ export function About() {
             />
 
             <div className="relative overflow-hidden rounded-2xl border border-line bg-bg-card">
-              <div data-portrait-inner className="relative aspect-[4/5] w-full overflow-hidden">
+              <div data-portrait-inner className="relative aspect-[2/3] w-full overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element -- asset local em /public */}
                 <img
                   data-portrait-img
@@ -107,8 +107,8 @@ export function About() {
                   srcSet="/images/about/gabriel-640.webp 640w, /images/about/gabriel-1100.webp 1100w"
                   sizes="(min-width: 768px) 40vw, 80vw"
                   alt="Gabriel Medeiros Garcia"
-                  width={900}
-                  height={1125}
+                  width={1536}
+                  height={2304}
                   className="h-full w-full object-cover object-center"
                 />
 
