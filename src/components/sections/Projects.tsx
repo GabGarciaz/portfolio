@@ -32,7 +32,9 @@ export function Projects() {
       mm.add("(min-width: 768px)", () => {
         if (reduce) return;
 
-        const getDistance = () => trackEl.scrollWidth - window.innerWidth + 96;
+        // A trilha tem folga de meia tela nas pontas (ver o padding abaixo),
+        // então o primeiro card já nasce centralizado e o último termina no centro.
+        const getDistance = () => trackEl.scrollWidth - window.innerWidth;
 
         const tween = gsap.to(trackEl, {
           x: () => -getDistance(),
@@ -49,30 +51,38 @@ export function Projects() {
           },
         });
 
-        // Cada card gira em 3D conforme atravessa a viewport
+        // Cada card gira em 3D conforme atravessa a viewport: entra virado pela
+        // direita, fica reto no centro e sai virado pela esquerda. Antes a
+        // rotação ia de 22° a -22° sem parar no zero, e o primeiro card, que
+        // começa perto da borda, aparecia virado e espremido.
         const cards = cardRefs.current.filter(Boolean) as HTMLElement[];
         cards.forEach((card, i) => {
-          gsap.fromTo(
-            card,
-            { rotateY: 22, scale: 0.9, opacity: 0.45 },
-            {
-              rotateY: -22,
-              scale: 1,
-              opacity: 1,
-              ease: "none",
-              scrollTrigger: {
-                trigger: card,
-                containerAnimation: tween,
-                start: "left right",
-                end: "right left",
-                scrub: 0.35,
-                onUpdate: (self) => {
-                  // o card mais próximo do centro define o painel de texto
-                  if (self.progress > 0.35 && self.progress < 0.65) setActive(i);
-                },
+          const tl = gsap.timeline({
+            defaults: { ease: "none" },
+            scrollTrigger: {
+              trigger: card,
+              containerAnimation: tween,
+              start: "left right",
+              end: "right left",
+              scrub: 0.35,
+              onUpdate: (self) => {
+                // o card mais próximo do centro define o painel de texto
+                if (self.progress > 0.35 && self.progress < 0.65) setActive(i);
               },
-            }
-          );
+            },
+          });
+          // O eixo fica na borda voltada para o centro: entrando, a borda
+          // esquerda fica parada e a direita recua; saindo, o contrário.
+          // Com o eixo no meio, a metade que vem para frente invadia o card
+          // vizinho. A troca de eixo acontece com o card reto, sem salto.
+          tl.set(card, { transformOrigin: "0% 50%" }, 0)
+            .fromTo(
+              card,
+              { rotateY: 24, scale: 0.88, opacity: 0.4 },
+              { rotateY: 0, scale: 1, opacity: 1 }
+            )
+            .set(card, { transformOrigin: "100% 50%" })
+            .to(card, { rotateY: -24, scale: 0.88, opacity: 0.4 });
         });
 
         return () => {
@@ -105,10 +115,12 @@ export function Projects() {
       </div>
 
       {/* Trilha horizontal */}
-      <div className="flex h-full items-center md:pt-10">
+      {/* --card-w: largura do card limitada também pela altura da tela, para
+          caber inteiro em notebook baixo sem encostar no título da seção. */}
+      <div className="flex h-full items-center md:pt-24 md:[--card-w:min(58vw,760px,calc((100svh-470px)*1.78))]">
         <div
           ref={track}
-          className="flex flex-col gap-10 px-6 md:flex-row md:items-center md:gap-12 md:px-12"
+          className="flex flex-col gap-10 px-6 md:flex-row md:items-center md:gap-12 md:px-[calc((100vw-var(--card-w))/2)]"
           style={{ perspective: 1400 }}
         >
           {projects.map((p, i) => (
@@ -172,7 +184,7 @@ function ProjectCard({
   return (
     <article
       ref={innerRef}
-      className="group relative w-full shrink-0 md:w-[min(58vw,760px)]"
+      className="group relative w-full shrink-0 md:w-[var(--card-w)]"
       style={{ transformStyle: "preserve-3d" }}
     >
       <div className="relative overflow-hidden rounded-2xl border border-line bg-bg-card shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)]">
@@ -191,7 +203,7 @@ function ProjectCard({
                 }
               : undefined
           }
-          className={`relative aspect-[16/10] w-full overflow-hidden ${
+          className={`relative aspect-[16/10] w-full overflow-hidden md:aspect-video ${
             hasMedia ? "cursor-pointer" : ""
           }`}
         >
@@ -284,7 +296,9 @@ function ProjectCard({
             </div>
           )}
           <h3 className="text-2xl font-bold md:text-3xl">{project.name}</h3>
-          <p className="mt-3 max-w-xl text-sm leading-relaxed text-fg-dim">{project.summary}</p>
+          <p className="mt-3 max-w-xl text-sm leading-relaxed text-fg-dim md:line-clamp-4" title={project.summary}>
+            {project.summary}
+          </p>
           <ul className="mt-5 flex flex-wrap gap-2">
             {project.stack.map((t) => (
               <li

@@ -10,7 +10,7 @@ export const projects: Project[] = [
     stack: ["HTML", "CSS", "JavaScript", "PHP", "SEO"],
     thumbnailColor: "#f4ece2",
     thumbnailSrc: "/images/projects/intermed/home.webp",
-    group: "InterMed · 01 / 03",
+    group: "InterMed · 01 / 04",
     gallery: [
       { src: "/images/projects/intermed/intro-mobile.webp", caption: "Abertura animada no celular" },
       { src: "/images/projects/intermed/home-mobile.webp", caption: "Página inicial no celular" },
@@ -27,9 +27,10 @@ export const projects: Project[] = [
       "O paciente monta o próprio projeto: escolhe os procedimentos num carrinho, responde um quiz de anamnese, uma pergunta por tela, e reserva a avaliação. O servidor recalcula a estimativa e guarda os dados de saúde separados do contato, e a agenda consulta os horários livres pela API do Feegow.",
     stack: ["JavaScript", "PHP", "API Feegow", "LGPD"],
     thumbnailColor: "#f4ece2",
-    thumbnailSrc: "/images/projects/intermed/montar-destaques.webp",
-    group: "InterMed · 02 / 03",
+    thumbnailSrc: "/images/projects/intermed/wizard-inscricao.webp",
+    group: "InterMed · 02 / 04",
     gallery: [
+      { src: "/images/projects/intermed/montar-hero.webp", caption: "Vitrine do Projeto InterMed" },
       { src: "/images/projects/intermed/wizard-1.webp", caption: "Etapa 1 do wizard, com a estimativa" },
     ],
   },
@@ -42,10 +43,23 @@ export const projects: Project[] = [
     stack: ["HTML", "CSS", "Python", "Meta Ads", "Google Ads"],
     thumbnailColor: "#0e0e0e",
     thumbnailSrc: "/images/projects/intermed/lp-hidrolipo.webp",
-    group: "InterMed · 03 / 03",
+    group: "InterMed · 03 / 04",
     gallery: [
       { src: "/images/projects/intermed/lp-mobile.webp", caption: "Landing page no celular" },
-      { src: "/images/projects/intermed/procedimentos-cards.webp", caption: "Vitrine de procedimentos do site" },
+    ],
+  },
+  {
+    slug: "intermed-trafego",
+    name: "InterMed · Dashboard de tráfego",
+    date: "Dados e anúncios",
+    summary:
+      "Painel que junta os anúncios do Meta, os leads e as conversas de WhatsApp num só lugar e atualiza sozinho. Diz, anúncio por anúncio, se vale manter, pausar ou escalar, e mostra no mapa quanto custa cada conversa por região do Rio.",
+    stack: ["PHP", "JavaScript", "API do Meta", "Cron", "Mapas"],
+    thumbnailColor: "#14110d",
+    thumbnailSrc: "/images/projects/intermed/dashboard-regioes.webp",
+    group: "InterMed · 04 / 04",
+    gallery: [
+      { src: "/images/projects/intermed/dashboard-anuncios.webp", caption: "Anúncios do dia, com o veredito de cada um" },
     ],
   },
   {
