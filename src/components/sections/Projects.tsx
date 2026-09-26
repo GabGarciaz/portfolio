@@ -137,19 +137,25 @@ export function Projects() {
         </p>
       </div>
 
-      <Lightbox media={zoomed ? toMedia(zoomed) : null} onClose={() => setZoomed(null)} />
+      {zoomed && (
+        <Lightbox key={zoomed.slug} items={toMedia(zoomed)} onClose={() => setZoomed(null)} />
+      )}
     </section>
   );
 }
 
-function toMedia(project: Project): LightboxMedia | null {
+/** Capa (vídeo ou imagem) seguida das telas extras da galeria. */
+function toMedia(project: Project): LightboxMedia[] {
+  const items: LightboxMedia[] = [];
   if (project.videoSrc) {
-    return { type: "video", src: project.videoSrc, title: project.name, caption: project.date };
+    items.push({ type: "video", src: project.videoSrc, title: project.name, caption: project.date });
+  } else if (project.thumbnailSrc) {
+    items.push({ type: "image", src: project.thumbnailSrc, title: project.name, caption: project.date });
   }
-  if (project.thumbnailSrc) {
-    return { type: "image", src: project.thumbnailSrc, title: project.name, caption: project.date };
+  for (const g of project.gallery ?? []) {
+    items.push({ type: "image", src: g.src, title: project.name, caption: g.caption });
   }
-  return null;
+  return items;
 }
 
 function ProjectCard({
@@ -242,6 +248,16 @@ function ProjectCard({
               >
                 <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path>
               </svg>
+            </span>
+          )}
+
+          {project.gallery && project.gallery.length > 0 && (
+            <span className="pointer-events-none absolute bottom-4 right-5 flex items-center gap-1.5 rounded-full border border-line bg-bg/75 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-fg-dim backdrop-blur">
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="7" width="14" height="14" rx="2"></rect>
+                <path d="M7 3h12a2 2 0 0 1 2 2v12"></path>
+              </svg>
+              {project.gallery.length + 1} telas
             </span>
           )}
         </div>

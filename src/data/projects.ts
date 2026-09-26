@@ -2,6 +2,53 @@ import type { Project } from "@/types/content";
 
 export const projects: Project[] = [
   {
+    slug: "intermed-site",
+    name: "InterMed · Site institucional",
+    date: "Trabalho atual",
+    summary:
+      "Site da InterMed Day Hospital da Plástica, feito em HTML, CSS e JavaScript puros, sem framework. Abertura animada, catálogo de procedimentos, página da estrutura hospitalar, área de cursos, programa de indicação com moeda própria e uma página de links para as redes.",
+    stack: ["HTML", "CSS", "JavaScript", "PHP", "SEO"],
+    thumbnailColor: "#f4ece2",
+    thumbnailSrc: "/images/projects/intermed/home.webp",
+    group: "InterMed · 01 / 03",
+    gallery: [
+      { src: "/images/projects/intermed/intro-mobile.webp", caption: "Abertura animada no celular" },
+      { src: "/images/projects/intermed/home-mobile.webp", caption: "Página inicial no celular" },
+      { src: "/images/projects/intermed/estrutura.webp", caption: "Estrutura hospitalar" },
+      { src: "/images/projects/intermed/embaixadores.webp", caption: "Círculo InterMed, programa de indicação" },
+      { src: "/images/projects/intermed/links.webp", caption: "Página de links das redes" },
+    ],
+  },
+  {
+    slug: "intermed-projeto",
+    name: "InterMed · Jornada de reserva",
+    date: "Produto digital",
+    summary:
+      "O paciente monta o próprio projeto: escolhe os procedimentos num carrinho, responde um quiz de anamnese, uma pergunta por tela, e reserva a avaliação. O servidor recalcula a estimativa e guarda os dados de saúde separados do contato, e a agenda consulta os horários livres pela API do Feegow.",
+    stack: ["JavaScript", "PHP", "API Feegow", "LGPD"],
+    thumbnailColor: "#f4ece2",
+    thumbnailSrc: "/images/projects/intermed/montar-destaques.webp",
+    group: "InterMed · 02 / 03",
+    gallery: [
+      { src: "/images/projects/intermed/wizard-1.webp", caption: "Etapa 1 do wizard, com a estimativa" },
+    ],
+  },
+  {
+    slug: "intermed-lps",
+    name: "InterMed · Landing pages",
+    date: "Tráfego pago",
+    summary:
+      "Sete landing pages de procedimentos para as campanhas de anúncio, geradas a partir de um molde único por script. Cada formulário grava o lead e já encaminha a pessoa para o grupo de WhatsApp do procedimento que ela escolheu.",
+    stack: ["HTML", "CSS", "Python", "Meta Ads", "Google Ads"],
+    thumbnailColor: "#0e0e0e",
+    thumbnailSrc: "/images/projects/intermed/lp-hidrolipo.webp",
+    group: "InterMed · 03 / 03",
+    gallery: [
+      { src: "/images/projects/intermed/lp-mobile.webp", caption: "Landing page no celular" },
+      { src: "/images/projects/intermed/procedimentos-cards.webp", caption: "Vitrine de procedimentos do site" },
+    ],
+  },
+  {
     slug: "scanner-sti",
     name: "Scanner STI",
     date: "Automação com IA",

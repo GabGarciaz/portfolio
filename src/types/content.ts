@@ -25,6 +25,8 @@ export interface Project {
   videoSrc?: string;
   /** Amarra dois cards como partes do mesmo sistema (ex.: "Automação STI · 01/02"). */
   group?: string;
+  /** Telas extras, navegáveis no lightbox depois da capa. */
+  gallery?: { src: string; caption: string }[];
   href?: string;
 }
 
