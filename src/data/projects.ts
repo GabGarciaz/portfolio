@@ -10,8 +10,10 @@ export const projects: Project[] = [
     stack: ["HTML", "CSS", "JavaScript", "PHP", "SEO"],
     thumbnailColor: "#f4ece2",
     thumbnailSrc: "/images/projects/intermed/home.webp",
-    group: "InterMed · 01 / 04",
+    group: "InterMed · 01 / 05",
     gallery: [
+      { src: "/images/projects/intermed/home-outubro-rosa.webp", caption: "Página inicial com o banner do Outubro Rosa" },
+      { src: "/images/projects/intermed/outubro-rosa.webp", caption: "Outubro Rosa: página para mandar um lembrete de cuidado" },
       { src: "/images/projects/intermed/intro-mobile.webp", caption: "Abertura animada no celular" },
       { src: "/images/projects/intermed/home-mobile.webp", caption: "Página inicial no celular" },
       { src: "/images/projects/intermed/estrutura.webp", caption: "Estrutura hospitalar" },
@@ -28,7 +30,7 @@ export const projects: Project[] = [
     stack: ["JavaScript", "PHP", "API Feegow", "LGPD"],
     thumbnailColor: "#f4ece2",
     thumbnailSrc: "/images/projects/intermed/wizard-inscricao.webp",
-    group: "InterMed · 02 / 04",
+    group: "InterMed · 02 / 05",
     gallery: [
       { src: "/images/projects/intermed/montar-hero.webp", caption: "Vitrine do Projeto InterMed" },
       { src: "/images/projects/intermed/wizard-1.webp", caption: "Etapa 1 do wizard, com a estimativa" },
@@ -43,7 +45,7 @@ export const projects: Project[] = [
     stack: ["HTML", "CSS", "Python", "Meta Ads", "Google Ads"],
     thumbnailColor: "#0e0e0e",
     thumbnailSrc: "/images/projects/intermed/lp-hidrolipo.webp",
-    group: "InterMed · 03 / 04",
+    group: "InterMed · 03 / 05",
     gallery: [
       { src: "/images/projects/intermed/lp-mobile.webp", caption: "Landing page no celular" },
     ],
@@ -57,9 +59,25 @@ export const projects: Project[] = [
     stack: ["PHP", "JavaScript", "API do Meta", "Cron", "Mapas"],
     thumbnailColor: "#14110d",
     thumbnailSrc: "/images/projects/intermed/dashboard-regioes.webp",
-    group: "InterMed · 04 / 04",
+    group: "InterMed · 04 / 05",
     gallery: [
       { src: "/images/projects/intermed/dashboard-anuncios.webp", caption: "Anúncios do dia, com o veredito de cada um" },
+    ],
+  },
+  {
+    slug: "intermed-campanha-hidrolipo",
+    name: "InterMed · Campanha de hidrolipo",
+    date: "Design de campanha",
+    summary:
+      "Criativos da campanha de novembro para levar gente ao grupo Projeto Hidrolipo no WhatsApp: três peças de feed, versões de story e um cartão impresso com QR code. Feitos em código, com fotos reais do hospital e dentro das regras de publicidade médica: sem antes e depois e sem preço.",
+    stack: ["HTML", "CSS", "Design", "Meta Ads", "Publicidade médica"],
+    thumbnailColor: "#0b0a08",
+    thumbnailSrc: "/images/projects/intermed/hidro-novembro-feed.webp",
+    group: "InterMed · 05 / 05",
+    gallery: [
+      { src: "/images/projects/intermed/hidro-hospital-feed.webp", caption: "Feed: o hospital" },
+      { src: "/images/projects/intermed/hidro-grupo-feed.webp", caption: "Feed: o grupo no WhatsApp" },
+      { src: "/images/projects/intermed/hidro-hospital-story.webp", caption: "Story" },
     ],
   },
   {
