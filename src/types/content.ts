@@ -13,8 +13,11 @@ export interface SiteConfig {
   };
 }
 
+export type ProjectKind = "web" | "automacao" | "design" | "video";
+
 export interface Project {
   slug: string;
+  kind: ProjectKind;
   name: string;
   date: string;
   summary: string;
@@ -30,8 +33,3 @@ export interface Project {
   href?: string;
 }
 
-export interface SkillCategory {
-  id: string;
-  label: string;
-  tags: string[];
-}

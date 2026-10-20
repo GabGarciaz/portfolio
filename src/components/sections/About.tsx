@@ -7,10 +7,12 @@ import { Reveal } from "@/components/ui/Reveal";
 import { site } from "@/data/site";
 
 const STATS = [
-  { value: "13", label: "Projetos entregues" },
-  { value: "IA", label: "Automação de processos" },
-  { value: "Full", label: "Stack ponta a ponta" },
+  { value: "13", label: "Projetos no portfólio" },
+  { value: "04", label: "Áreas, do código ao anúncio" },
+  { value: "01", label: "Empresa atual: InterMed" },
 ];
+
+const MANIFESTO = ["Eu construo", "sistemas que tiram", "o trabalho repetitivo", "das pessoas."];
 
 export function About() {
   const root = useRef<HTMLElement>(null);
@@ -19,13 +21,13 @@ export function About() {
     () => {
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-      // linha dourada que se desenha ao entrar
-      gsap.from("[data-rule]", {
-        scaleX: 0,
-        transformOrigin: "left center",
-        duration: 1.1,
+      // manifesto sobe linha por linha de dentro da própria máscara
+      gsap.from("[data-manifesto-line]", {
+        yPercent: 110,
+        duration: 1.2,
         ease: "expo.out",
-        scrollTrigger: { trigger: root.current, start: "top 75%", once: true },
+        stagger: 0.08,
+        scrollTrigger: { trigger: "[data-manifesto]", start: "top 80%", once: true },
       });
 
       // Retrato: a moldura sobe e a imagem contra-move, revelando por baixo.
@@ -43,7 +45,6 @@ export function About() {
       portraitIn
         .from("[data-portrait-inner]", { yPercent: 102 })
         .from("[data-portrait-img]", { yPercent: -55, scale: 1.2 }, "<")
-        .from("[data-portrait-frame]", { opacity: 0, x: -14, y: 14, duration: 0.9 }, "-=0.75")
         .from("[data-portrait-tag]", { opacity: 0, y: 14, duration: 0.7 }, "-=0.6");
 
       gsap.fromTo(
@@ -62,11 +63,11 @@ export function About() {
       );
 
       gsap.from("[data-stat]", {
-        y: 30,
+        y: 40,
         opacity: 0,
-        duration: 0.7,
+        duration: 0.9,
         ease: "expo.out",
-        stagger: 0.09,
+        stagger: 0.1,
         scrollTrigger: { trigger: "[data-stats]", start: "top 90%", once: true },
       });
     },
@@ -74,30 +75,23 @@ export function About() {
   );
 
   return (
-    <section ref={root} id="sobre" className="relative border-t border-line px-6 py-28 md:px-12 md:py-40">
-      <div className="mx-auto max-w-6xl">
-        <span className="text-[11px] uppercase tracking-[0.3em] text-gold">Sobre</span>
+    <section ref={root} id="sobre" className="relative z-10 px-5 py-24 md:px-12 md:py-40">
+      <div className="mx-auto max-w-[1600px]">
+        <span className="text-[11px] uppercase tracking-[0.3em] text-fg-dim">Sobre</span>
 
-        <Reveal
-          as="h2"
-          className="mt-6 max-w-4xl text-3xl font-black leading-[1.12] tracking-tight md:text-5xl"
-        >
-          Entre automação, código e design, eu construo sistemas que tiram o
-          trabalho repetitivo das pessoas.
-        </Reveal>
+        <h2 data-manifesto aria-label={MANIFESTO.join(" ")} className="display mt-6 text-[10.4vw] md:text-[7.4vw]">
+          {MANIFESTO.map((line, i) => (
+            <span key={line} aria-hidden="true" className="block overflow-hidden pb-[0.04em]">
+              <span data-manifesto-line className={`block ${i === 2 ? "text-iris" : ""}`}>
+                {line}
+              </span>
+            </span>
+          ))}
+        </h2>
 
-        <div data-rule className="mt-14 h-px w-full bg-gradient-to-r from-gold/70 via-line to-transparent" />
-
-        <div className="mt-14 grid gap-14 md:mt-20 md:grid-cols-[0.85fr_1.15fr] md:items-center md:gap-20">
-          {/* Retrato */}
-          <div data-portrait className="relative mx-auto w-full max-w-xs md:mx-0 md:max-w-none">
-            {/* moldura dourada deslocada, dá profundidade sem pesar */}
-            <div
-              data-portrait-frame
-              aria-hidden="true"
-              className="pointer-events-none absolute -bottom-4 -left-4 h-full w-full rounded-2xl border border-gold/25 md:-bottom-5 md:-left-5"
-            />
-
+        <div className="mt-16 grid gap-14 md:mt-24 md:grid-cols-[0.8fr_1.2fr] md:items-end md:gap-20">
+          {/* Retrato: preto e branco, ganha cor no hover */}
+          <div data-portrait className="group relative mx-auto w-full max-w-xs md:mx-0 md:max-w-md">
             <div className="relative overflow-hidden rounded-2xl border border-line bg-bg-card">
               <div data-portrait-inner className="relative aspect-[2/3] w-full overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element -- asset local em /public */}
@@ -105,30 +99,20 @@ export function About() {
                   data-portrait-img
                   src="/images/about/gabriel-1100.webp"
                   srcSet="/images/about/gabriel-640.webp 640w, /images/about/gabriel-1100.webp 1100w"
-                  sizes="(min-width: 768px) 40vw, 80vw"
+                  sizes="(min-width: 768px) 32vw, 80vw"
                   alt="Gabriel Medeiros Garcia"
                   width={1536}
                   height={2304}
-                  className="h-full w-full object-cover object-center"
+                  className="h-full w-full object-cover object-center grayscale transition-[filter] duration-700 group-hover:grayscale-0"
                 />
 
-                {/* funde a parede clara da foto no fundo do site */}
+                {/* funde a base da foto no fundo do site */}
                 <div
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-0"
                   style={{
                     backgroundImage:
                       "linear-gradient(to top, var(--bg-card) 1%, var(--bg-card-fade) 34%)",
-                  }}
-                />
-
-                {/* vinheta suave: tira o peso da parede clara nas bordas */}
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-0"
-                  style={{
-                    backgroundImage:
-                      "radial-gradient(115% 85% at 50% 32%, rgb(4 7 15 / 0) 45%, rgb(4 7 15 / 0.45) 100%)",
                   }}
                 />
               </div>
@@ -143,17 +127,17 @@ export function About() {
             </div>
           </div>
 
-          {/* Texto */}
+          {/* Texto e números */}
           <div>
-            <Reveal as="p" className="text-base leading-relaxed text-fg-dim md:text-lg">
+            <Reveal as="p" className="max-w-xl text-base leading-relaxed text-fg-dim md:text-lg">
               {site.about.bio}
             </Reveal>
 
-            <div data-stats className="mt-12 grid grid-cols-3 gap-6 md:mt-16 md:gap-8">
-              {STATS.map((s) => (
-                <div key={s.label} data-stat>
-                  <div className="font-serif text-3xl italic text-gold md:text-4xl">{s.value}</div>
-                  <div className="mt-2 text-[10px] uppercase leading-snug tracking-[0.06em] text-fg-faint sm:text-[11px] sm:tracking-[0.15em]">
+            <div data-stats className="mt-14 grid grid-cols-3 border-t border-line md:mt-20">
+              {STATS.map((s, i) => (
+                <div key={s.label} data-stat className={`pt-6 ${i > 0 ? "border-l border-line pl-4 md:pl-8" : ""}`}>
+                  <div className="display text-[16vw] leading-none md:text-[6vw]">{s.value}</div>
+                  <div className="mt-3 text-[10px] uppercase leading-snug tracking-[0.06em] text-fg-dim sm:text-[11px] sm:tracking-[0.15em]">
                     {s.label}
                   </div>
                 </div>

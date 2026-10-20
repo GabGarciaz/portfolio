@@ -3,6 +3,7 @@ import type { Project } from "@/types/content";
 export const projects: Project[] = [
   {
     slug: "intermed-site",
+    kind: "web",
     name: "InterMed · Site institucional",
     date: "Trabalho atual",
     summary:
@@ -23,6 +24,7 @@ export const projects: Project[] = [
   },
   {
     slug: "intermed-projeto",
+    kind: "web",
     name: "InterMed · Jornada de reserva",
     date: "Produto digital",
     summary:
@@ -38,6 +40,7 @@ export const projects: Project[] = [
   },
   {
     slug: "intermed-lps",
+    kind: "web",
     name: "InterMed · Landing pages",
     date: "Tráfego pago",
     summary:
@@ -52,6 +55,7 @@ export const projects: Project[] = [
   },
   {
     slug: "intermed-trafego",
+    kind: "automacao",
     name: "InterMed · Dashboard de tráfego",
     date: "Dados e anúncios",
     summary:
@@ -66,6 +70,7 @@ export const projects: Project[] = [
   },
   {
     slug: "intermed-campanha-hidrolipo",
+    kind: "design",
     name: "InterMed · Campanha de hidrolipo",
     date: "Design de campanha",
     summary:
@@ -82,6 +87,7 @@ export const projects: Project[] = [
   },
   {
     slug: "scanner-sti",
+    kind: "automacao",
     name: "Scanner STI",
     date: "Automação com IA",
     summary:
@@ -93,6 +99,7 @@ export const projects: Project[] = [
   },
   {
     slug: "documentos-andrews",
+    kind: "automacao",
     name: "Documentos do Andrews",
     date: "Aplicativo desktop",
     summary:
@@ -104,6 +111,7 @@ export const projects: Project[] = [
   },
   {
     slug: "tere-ecommerce",
+    kind: "web",
     name: "Terê Sorvetes",
     date: "E-commerce full-stack",
     summary:
@@ -114,6 +122,7 @@ export const projects: Project[] = [
   },
   {
     slug: "meridiano",
+    kind: "web",
     name: "Meridiano",
     date: "Site dinâmico",
     summary:
@@ -124,6 +133,7 @@ export const projects: Project[] = [
   },
   {
     slug: "edicao-video",
+    kind: "video",
     name: "Edição de Vídeo",
     date: "CapCut & IA",
     summary:
@@ -134,6 +144,7 @@ export const projects: Project[] = [
   },
   {
     slug: "avatar-ia",
+    kind: "video",
     name: "Avatar com IA",
     date: "Vídeo para marketing",
     summary:
@@ -144,6 +155,7 @@ export const projects: Project[] = [
   },
   {
     slug: "identidade-tere-divulgacao",
+    kind: "design",
     name: "Identidade Terê · Divulgação",
     date: "Design & Marketing",
     summary:
@@ -154,6 +166,7 @@ export const projects: Project[] = [
   },
   {
     slug: "identidade-tere-milkshake",
+    kind: "design",
     name: "Identidade Terê · Milkshake",
     date: "Design & Marketing",
     summary:

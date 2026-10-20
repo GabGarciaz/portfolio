@@ -29,7 +29,8 @@ export function ScrollProgress() {
     <div className="fixed left-0 right-0 top-0 z-[150] h-[2px] bg-transparent">
       <div
         ref={barRef}
-        className="h-full origin-left bg-gradient-to-r from-gold to-blue"
+        className="h-full origin-left"
+        style={{ backgroundImage: "var(--iris)" }}
       />
     </div>
   );

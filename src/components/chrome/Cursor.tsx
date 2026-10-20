@@ -41,13 +41,13 @@ export function Cursor() {
     const interactive = "a, button, [data-cursor='grow']";
     const onOver = (e: PointerEvent) => {
       if ((e.target as HTMLElement).closest?.(interactive)) {
-        gsap.to(ring, { scale: 2.1, borderColor: "rgba(217,178,106,0.9)", duration: 0.3 });
+        gsap.to(ring, { scale: 2.1, borderColor: "rgba(242,242,240,0.9)", duration: 0.3 });
         gsap.to(dot, { scale: 0.4, duration: 0.3 });
       }
     };
     const onOut = (e: PointerEvent) => {
       if ((e.target as HTMLElement).closest?.(interactive)) {
-        gsap.to(ring, { scale: 1, borderColor: "rgba(234,238,251,0.35)", duration: 0.3 });
+        gsap.to(ring, { scale: 1, borderColor: "rgba(242,242,240,0.35)", duration: 0.3 });
         gsap.to(dot, { scale: 1, duration: 0.3 });
       }
     };
@@ -65,11 +65,11 @@ export function Cursor() {
 
   return (
     <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-[200] hidden md:block">
-      <div ref={dotRef} className="absolute h-1.5 w-1.5 rounded-full bg-gold opacity-0" />
+      <div ref={dotRef} className="absolute h-1.5 w-1.5 rounded-full bg-fg opacity-0" />
       <div
         ref={ringRef}
         className="absolute h-9 w-9 rounded-full border opacity-0"
-        style={{ borderColor: "rgba(234,238,251,0.35)" }}
+        style={{ borderColor: "rgba(242,242,240,0.35)" }}
       />
     </div>
   );

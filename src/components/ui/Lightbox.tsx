@@ -119,7 +119,7 @@ export function Lightbox({
   if (!media || typeof document === "undefined") return null;
 
   const navBtn =
-    "absolute top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-line bg-bg/70 text-fg-dim backdrop-blur transition-colors hover:border-gold hover:text-gold";
+    "absolute top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-line bg-bg/70 text-fg-dim backdrop-blur transition-colors hover:border-fg hover:text-fg";
 
   return createPortal(
     <div
@@ -135,7 +135,7 @@ export function Lightbox({
         type="button"
         onClick={requestClose}
         aria-label="Fechar"
-        className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-line text-fg-dim transition-colors hover:border-gold hover:text-gold md:right-8 md:top-8"
+        className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-line text-fg-dim transition-colors hover:border-fg hover:text-fg md:right-8 md:top-8"
       >
         <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
           <path d="M18 6 6 18M6 6l12 12"></path>
@@ -188,7 +188,7 @@ export function Lightbox({
             <p className="mt-1 text-[11px] uppercase tracking-[0.2em] text-fg-faint">{media.caption}</p>
           )}
           {hasMany && (
-            <p className="mt-2 text-[11px] tabular-nums tracking-[0.2em] text-gold/80" aria-live="polite">
+            <p className="mt-2 text-[11px] tabular-nums tracking-[0.2em] text-fg-dim" aria-live="polite">
               {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
             </p>
           )}

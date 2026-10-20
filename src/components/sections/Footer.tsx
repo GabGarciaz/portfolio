@@ -4,7 +4,6 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import { useLenis } from "@/hooks/useLenis";
-import { Reveal } from "@/components/ui/Reveal";
 import { site } from "@/data/site";
 
 export function Footer() {
@@ -13,7 +12,7 @@ export function Footer() {
 
   const toTop = () => {
     const lenis = lenisRef?.current;
-    if (lenis) lenis.scrollTo(0, { duration: 1.1 });
+    if (lenis) lenis.scrollTo(0, { duration: 1.4 });
     else window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -21,48 +20,49 @@ export function Footer() {
     () => {
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-      // O nome gigante desliza horizontalmente conforme o rodapé entra
+      // as duas linhas do título se cruzam enquanto o rodapé entra
       gsap.fromTo(
-        "[data-marquee]",
-        { xPercent: 6 },
-        {
-          xPercent: -6,
-          ease: "none",
-          scrollTrigger: { trigger: root.current, start: "top bottom", end: "bottom bottom", scrub: 0.4 },
-        }
+        "[data-cta-row='0']",
+        { xPercent: -8 },
+        { xPercent: 0, ease: "none", scrollTrigger: { trigger: root.current, start: "top bottom", end: "center center", scrub: 0.4 } }
+      );
+      gsap.fromTo(
+        "[data-cta-row='1']",
+        { xPercent: 8 },
+        { xPercent: 0, ease: "none", scrollTrigger: { trigger: root.current, start: "top bottom", end: "center center", scrub: 0.4 } }
       );
     },
     { scope: root }
   );
 
   return (
-    <footer
-      ref={root}
-      id="rodape"
-      className="relative overflow-hidden border-t border-line px-6 pt-28 md:px-12 md:pt-40"
-    >
-      <div className="pointer-events-none absolute left-1/2 top-0 h-[40vh] w-[70vw] -translate-x-1/2 rounded-full bg-gold/8 blur-[140px]" />
+    <footer ref={root} id="rodape" className="relative z-10 overflow-hidden px-5 pt-24 md:px-12 md:pt-36">
+      <div className="mx-auto max-w-[1600px]">
+        <span className="text-[11px] uppercase tracking-[0.3em] text-fg-dim">Contato</span>
 
-      <div className="relative mx-auto max-w-6xl">
-        <span className="text-[11px] uppercase tracking-[0.3em] text-gold">Contato</span>
+        {/* o vidro do palco WebGL pousa sobre este título */}
+        <h2 data-gl-anchor="contato" aria-label="Vamos construir" className="mt-6">
+          <span data-cta-row="0" aria-hidden="true" className="block">
+            <span data-gl-text className="display inline-block text-[24vw] md:text-[17vw]">Vamos</span>
+          </span>
+          <span data-cta-row="1" aria-hidden="true" className="block text-right">
+            <span data-gl-text className="display inline-block text-[24vw] md:text-[17vw]">Construir</span>
+          </span>
+        </h2>
 
-        <Reveal
-          as="h2"
-          className="mt-6 max-w-4xl text-4xl font-black leading-[1.05] tracking-tight md:text-7xl"
-        >
-          Vamos construir algo juntos.
-        </Reveal>
-
-        <div className="mt-14 flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
-          <div className="flex flex-col gap-4">
+        <div className="mt-16 flex flex-col gap-12 md:mt-24 md:flex-row md:items-end md:justify-between">
+          <div className="flex flex-col gap-5">
+            <p className="max-w-sm text-base leading-relaxed text-fg-dim">
+              Tem um processo manual que come o dia da sua equipe, ou um site que precisa sair do papel? Me chama.
+            </p>
             <a
               href="https://wa.me/5521987969097"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex w-fit items-center gap-4 text-2xl font-bold transition-colors hover:text-gold md:text-3xl"
+              className="group flex w-fit items-center gap-4 rounded-full bg-fg px-7 py-4 text-lg font-bold text-bg transition-transform hover:scale-[1.03] md:text-2xl"
             >
               {site.phone}
-              <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5">
+              <span aria-hidden="true" className="inline-block transition-transform duration-300 group-hover:rotate-[-45deg]">
                 →
               </span>
             </a>
@@ -74,7 +74,7 @@ export function Footer() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-fg-dim transition-colors hover:text-gold"
+                  className="text-fg-dim underline-offset-4 transition-colors hover:text-fg hover:underline"
                 >
                   {s.label}
                 </a>
@@ -85,26 +85,14 @@ export function Footer() {
           <button
             type="button"
             onClick={toTop}
-            className="flex w-fit items-center gap-3 rounded-full border border-line px-6 py-3 text-[11px] uppercase tracking-[0.2em] text-fg-dim transition-colors hover:border-gold hover:text-gold"
+            className="flex w-fit items-center gap-3 rounded-full border border-line px-6 py-3 text-[11px] uppercase tracking-[0.2em] text-fg-dim transition-colors hover:border-fg hover:text-fg"
           >
             Voltar ao topo <span aria-hidden="true">↑</span>
           </button>
         </div>
       </div>
 
-      {/* Nome gigante sangrando na base */}
-      <div className="relative mt-24 select-none overflow-hidden">
-        <div
-          data-marquee
-          aria-hidden="true"
-          className="whitespace-nowrap text-center text-[20vw] font-black leading-[0.78] tracking-tight text-transparent"
-          style={{ WebkitTextStroke: "1px rgba(234,238,251,0.14)" }}
-        >
-          {site.name.first} {site.name.last}
-        </div>
-      </div>
-
-      <div className="relative flex flex-col gap-2 border-t border-line py-6 text-[10px] uppercase tracking-[0.12em] text-fg-faint sm:flex-row sm:items-center sm:justify-between sm:text-[11px] sm:tracking-[0.2em]">
+      <div className="mx-auto mt-20 flex max-w-[1600px] flex-col gap-2 border-t border-line py-6 text-[10px] uppercase tracking-[0.12em] text-fg-faint sm:flex-row sm:items-center sm:justify-between sm:text-[11px] sm:tracking-[0.2em]">
         <span>© {site.copyrightYear} · {site.name.first} Medeiros Garcia</span>
         <span>Rio de Janeiro · Brasil</span>
       </div>

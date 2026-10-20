@@ -1,28 +1,26 @@
 @import "tailwindcss";
 
 :root {
-  /* Navy profundo — base */
-  --bg: #04070f;
-  --bg-raise: #080d1c;
-  --bg-card: #0b1226;
+  /* Preto quente — a cor vem do vidro 3D, não da interface */
+  --bg: #060606;
+  --bg-raise: #0d0d0c;
+  --bg-card: #111110;
   /* mesma cor com alfa 0: um gradiente que termina em `transparent` desbota
      para preto transparente e suja o meio do caminho */
-  --bg-card-fade: rgb(11 18 38 / 0);
+  --bg-card-fade: rgb(17 17 16 / 0);
 
-  /* Texto */
-  --fg: #eaeefb;
-  --fg-dim: #8b97b8;
-  --fg-faint: #4a5578;
+  --fg: #f2f2f0;
+  --fg-dim: #8a8a86;
+  --fg-faint: #4d4d4a;
+  --line: rgba(242, 242, 240, 0.1);
 
-  /* Dourado champagne — a cor premium */
-  --gold: #d9b26a;
-  --gold-bright: #f0d9a0;
+  /* "gold" segue como nome do acento (usado no cursor e no lightbox), agora
+     um branco puro; o arco-íris do vidro é a única cor da página */
+  --gold: #ffffff;
+  --gold-bright: #ffffff;
 
-  /* Azul elétrico — brilho de apoio */
-  --blue: #2f6bff;
-  --blue-glow: #6d9bff;
-
-  --line: rgba(234, 238, 251, 0.08);
+  /* gradiente iridescente para detalhes pontuais (barra de progresso, hover) */
+  --iris: linear-gradient(90deg, #7af0ff, #8b7bff 30%, #ff7ad9 60%, #ffd27a);
 }
 
 @theme inline {
@@ -34,11 +32,9 @@
   --color-fg-faint: var(--fg-faint);
   --color-gold: var(--gold);
   --color-gold-bright: var(--gold-bright);
-  --color-blue: var(--blue);
-  --color-blue-glow: var(--blue-glow);
   --color-line: var(--line);
   --font-sans: var(--font-archivo);
-  --font-serif: var(--font-fraunces);
+  --font-display: var(--font-anton);
 }
 
 html {
@@ -53,11 +49,10 @@ body {
 }
 
 ::selection {
-  background: var(--gold);
+  background: var(--fg);
   color: var(--bg);
 }
 
-/* Scrollbar discreta */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -65,25 +60,48 @@ body {
   background: var(--bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(217, 178, 106, 0.25);
+  background: rgba(242, 242, 240, 0.18);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(217, 178, 106, 0.45);
+  background: rgba(242, 242, 240, 0.35);
+}
+
+/* Títulos: condensado pesado, caixa alta, entrelinha justa */
+.display {
+  font-family: var(--font-anton), "Arial Narrow", Impact, sans-serif;
+  text-transform: uppercase;
+  line-height: 0.86;
+  letter-spacing: -0.01em;
+}
+
+/* Quando o palco WebGL desenha o texto, a versão HTML fica invisível mas
+   continua no lugar (layout, SEO, leitor de tela e seleção). */
+.gl-ready [data-gl-text] {
+  color: transparent;
+}
+
+.text-iris {
+  background: var(--iris);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Título da linha de projeto ganha o arco-íris do vidro no hover */
+@media (hover: hover) {
+  .group:hover .hover-iris {
+    background: var(--iris);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
 }
 
 /* Texto que revela por linha — o wrapper esconde o overflow */
 .line-mask {
   overflow: hidden;
   display: block;
-}
-
-/* Gradiente dourado em texto */
-.text-gold-gradient {
-  background: linear-gradient(120deg, var(--gold-bright), var(--gold) 45%, #a8823f);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
 }
 
 /* Grão sutil sobre a página inteira */
@@ -93,7 +111,7 @@ body {
   inset: 0;
   z-index: 100;
   pointer-events: none;
-  opacity: 0.035;
+  opacity: 0.045;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
