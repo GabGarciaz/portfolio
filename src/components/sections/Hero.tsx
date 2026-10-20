@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import { site } from "@/data/site";
+import { getIntroPhase, introReleased, subscribeIntro } from "@/lib/intro";
 
 /**
  * Camada HTML do hero. O nome gigante é marcado com `data-gl-text`: o palco
@@ -16,10 +17,15 @@ export function Hero() {
     () => {
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-      gsap
-        .timeline({ defaults: { ease: "expo.out" } })
+      // a entrada fica pronta (escondida) e só toca quando o chip da intro
+      // começa a voar para o topo
+      const intro = gsap
+        .timeline({ paused: true, defaults: { ease: "expo.out" } })
         .from("[data-hero-line]", { y: 80, opacity: 0, duration: 1.4, stagger: 0.14 })
         .from("[data-hero-fade]", { y: 16, opacity: 0, duration: 0.9, stagger: 0.07 }, "-=0.8");
+      const play = () => introReleased(getIntroPhase()) && intro.play();
+      play();
+      const unsubscribe = subscribeIntro(play);
 
       // ao sair, as linhas se separam: uma vai para a esquerda, outra para a direita
       gsap.to("[data-hero-row='0']", {
@@ -32,6 +38,8 @@ export function Hero() {
         ease: "none",
         scrollTrigger: { trigger: root.current, start: "top top", end: "bottom top", scrub: 0.4 },
       });
+
+      return unsubscribe;
     },
     { scope: root }
   );

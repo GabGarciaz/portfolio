@@ -4,6 +4,7 @@ import "./globals.css";
 import { SmoothScrollProvider } from "@/components/chrome/SmoothScrollProvider";
 import { Cursor } from "@/components/chrome/Cursor";
 import { ScrollProgress } from "@/components/chrome/ScrollProgress";
+import { Intro } from "@/components/chrome/Intro";
 import { GlassStageLoader } from "@/components/three/GlassStageLoader";
 
 const archivo = Archivo({
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SmoothScrollProvider>
           <Cursor />
           <ScrollProgress />
+          <Intro />
           <GlassStageLoader />
           {children}
         </SmoothScrollProvider>
