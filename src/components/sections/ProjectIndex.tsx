@@ -11,14 +11,19 @@ const FILTERS: { key: ProjectKind | "todos"; label: string }[] = [
   { key: "todos", label: "Todos" },
   { key: "web", label: "Web" },
   { key: "automacao", label: "Automação" },
-  { key: "design", label: "Design" },
-  { key: "video", label: "Vídeo" },
+  { key: "design", label: "Design e vídeo" },
 ];
+
+const KIND_LABEL: Record<ProjectKind, string> = {
+  web: "Web",
+  automacao: "Automação",
+  design: "Design e vídeo",
+};
 
 /**
  * Índice numerado dos projetos. No desktop a capa flutua seguindo o cursor
  * enquanto ele passa pelas linhas; no celular cada linha já mostra a capa.
- * Clicar abre a galeria em tela cheia.
+ * Clicar abre a página do caso: galeria em tela cheia e a ficha do projeto.
  */
 export function ProjectIndex() {
   const root = useRef<HTMLElement>(null);
@@ -208,8 +213,73 @@ export function ProjectIndex() {
         )}
       </div>
 
-      {zoomed && <Lightbox key={zoomed.slug} items={toMedia(zoomed)} onClose={() => setZoomed(null)} />}
+      {zoomed && (
+        <Lightbox
+          key={zoomed.slug}
+          items={toMedia(zoomed)}
+          onClose={() => setZoomed(null)}
+          aside={<CaseInfo project={zoomed} />}
+        />
+      )}
     </section>
+  );
+}
+
+/** Ficha do caso, ao lado da galeria. */
+function CaseInfo({ project: p }: { project: Project }) {
+  const n = projects.indexOf(p) + 1;
+  return (
+    <div className="flex flex-col gap-6 rounded-2xl border border-line bg-bg-card p-6 text-left md:p-7">
+      <div className="flex items-center justify-between gap-4 text-[10px] uppercase tracking-[0.18em] text-fg-dim">
+        <span className="tabular-nums">
+          {String(n).padStart(2, "0")} · {KIND_LABEL[p.kind]}
+        </span>
+        {p.group && <span className="text-right text-fg-faint">{p.group}</span>}
+      </div>
+
+      <div>
+        <h3 className="display text-[11vw] leading-[1] md:text-5xl">{p.name.replace(/^InterMed · /, "")}</h3>
+        <p className="mt-3 text-[11px] uppercase tracking-[0.16em] text-fg-faint">{p.date}</p>
+      </div>
+
+      <p className="text-sm leading-relaxed text-fg-dim">{p.summary}</p>
+
+      {p.highlights && (
+        <div>
+          <p className="text-[10px] uppercase tracking-[0.2em] text-fg-faint">O que tem por trás</p>
+          <ol className="mt-3 flex flex-col">
+            {p.highlights.map((h, i) => (
+              <li key={h} className="flex gap-3 border-t border-line py-3 text-sm leading-snug">
+                <span className="text-iris shrink-0 font-sans text-[11px] font-bold tabular-nums leading-5">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span>{h}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
+
+      <div className="flex flex-wrap gap-1.5">
+        {p.stack.map((s) => (
+          <span key={s} className="rounded-full border border-line px-2.5 py-1 text-[10px] uppercase tracking-[0.1em] text-fg-dim">
+            {s}
+          </span>
+        ))}
+      </div>
+
+      {p.href && (
+        <a
+          href={p.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group flex w-fit items-center gap-3 rounded-full bg-fg px-5 py-3 text-sm font-bold text-bg transition-transform hover:scale-[1.03]"
+        >
+          Ver ao vivo
+          <span aria-hidden="true" className="transition-transform duration-300 group-hover:-rotate-45">→</span>
+        </a>
+      )}
+    </div>
   );
 }
 

@@ -13,7 +13,7 @@ export interface SiteConfig {
   };
 }
 
-export type ProjectKind = "web" | "automacao" | "design" | "video";
+export type ProjectKind = "web" | "automacao" | "design";
 
 export interface Project {
   slug: string;
@@ -28,6 +28,8 @@ export interface Project {
   videoSrc?: string;
   /** Amarra dois cards como partes do mesmo sistema (ex.: "Automação STI · 01/02"). */
   group?: string;
+  /** O que tem de engenharia por trás, em frases curtas (página do caso). */
+  highlights?: string[];
   /** Telas extras, navegáveis no lightbox depois da capa. */
   gallery?: { src: string; caption: string }[];
   href?: string;

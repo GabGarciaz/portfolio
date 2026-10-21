@@ -15,9 +15,9 @@ export const capabilities: Capability[] = [
   },
   {
     title: "Automação com IA",
-    text: "Robôs que leem documentos, extraem dados e lançam no sistema, sempre com uma etapa de conferência humana. O objetivo é tirar das pessoas o trabalho de digitar a mesma coisa todo dia.",
-    stack: ["Python", "API Claude (Anthropic)", "IA multimodal", "Extração de PDFs", "TOTVS"],
-    example: { label: "Scanner STI", slug: "scanner-sti" },
+    text: "Robôs que trabalham sozinhos: leem documentos e lançam no sistema, cuidam dos grupos de WhatsApp, vigiam os anúncios do mercado. Sempre com uma trava humana onde um erro custa caro, e com freio para não queimar o número nem a cota.",
+    stack: ["Python", "API Claude (Anthropic)", "Playwright", "Docker", "GitHub Actions", "WhatsApp"],
+    example: { label: "Robôs de WhatsApp da InterMed", slug: "intermed-robos" },
   },
   {
     title: "Tráfego e dados",
@@ -28,7 +28,7 @@ export const capabilities: Capability[] = [
   {
     title: "Design e vídeo",
     text: "Identidade visual, criativos de campanha e vídeos para redes sociais, incluindo apresentadora gerada por IA. Peças feitas para converter, não só para ficar bonitas.",
-    stack: ["Canva", "CapCut", "Avatar com IA", "Identidade visual", "Criativos"],
+    stack: ["Criativos em código", "CapCut", "Avatar com IA", "Identidade visual", "Publicidade médica"],
     example: { label: "Campanha de hidrolipo", slug: "intermed-campanha-hidrolipo" },
   },
 ];

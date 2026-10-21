@@ -5,10 +5,12 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import { Reveal } from "@/components/ui/Reveal";
 import { site } from "@/data/site";
+import { projects } from "@/data/projects";
 
 const STATS = [
-  { value: "13", label: "Projetos no portfólio" },
-  { value: "04", label: "Áreas, do código ao anúncio" },
+  { value: String(projects.length).padStart(2, "0"), label: "Projetos no portfólio" },
+  // robô dos grupos, reativação, leitura de IA do tráfego e monitor de ofertas
+  { value: "04", label: "Automações rodando sozinhas" },
   { value: "01", label: "Empresa atual: InterMed" },
 ];
 

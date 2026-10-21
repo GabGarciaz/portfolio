@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { gsap } from "@/lib/gsap";
 import { useLenis } from "@/hooks/useLenis";
@@ -19,13 +19,18 @@ export interface LightboxMedia {
  *
  * Só existe montado enquanto está aberto: quem usa monta com `key` do
  * projeto, então o índice da galeria recomeça do zero a cada abertura.
+ *
+ * Com `aside`, vira a página de um caso: a galeria à esquerda e a ficha do
+ * projeto ao lado (embaixo, no celular).
  */
 export function Lightbox({
   items,
   onClose,
+  aside,
 }: {
   items: LightboxMedia[];
   onClose: () => void;
+  aside?: ReactNode;
 }) {
   const backdropRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -128,7 +133,7 @@ export function Lightbox({
       aria-modal="true"
       aria-label={media.title}
       onClick={requestClose}
-      className="fixed inset-0 z-[300] flex items-center justify-center bg-bg/92 p-4 backdrop-blur-xl md:p-8"
+      className="fixed inset-0 z-[300] flex items-center justify-center bg-bg/96 p-4 pt-20 backdrop-blur-xl md:p-8"
     >
       <button
         ref={closeRef}
@@ -145,8 +150,14 @@ export function Lightbox({
       <div
         ref={panelRef}
         onClick={(e) => e.stopPropagation()}
-        className="relative flex max-h-full w-full max-w-6xl flex-col items-center gap-4"
+        data-lenis-prevent
+        className={
+          aside
+            ? "grid max-h-full w-full max-w-7xl gap-5 overflow-y-auto md:grid-cols-[minmax(0,1fr)_380px] md:items-center md:gap-8 md:overflow-visible"
+            : "relative flex max-h-full w-full max-w-6xl flex-col items-center gap-4"
+        }
       >
+        <div className={aside ? "relative flex min-w-0 flex-col items-center gap-4" : "contents"}>
         <div ref={mediaRef} key={media.src} className="flex w-full justify-center">
           {media.type === "video" ? (
             <video
@@ -155,14 +166,14 @@ export function Lightbox({
               autoPlay
               loop
               playsInline
-              className="max-h-[76vh] w-auto max-w-full rounded-xl border border-line shadow-[0_40px_120px_-30px_rgba(0,0,0,0.9)]"
+              className={`${aside ? "max-h-[55vh] md:max-h-[80vh]" : "max-h-[76vh]"} w-auto max-w-full rounded-xl border border-line shadow-[0_40px_120px_-30px_rgba(0,0,0,0.9)]`}
             />
           ) : (
             /* eslint-disable-next-line @next/next/no-img-element -- assets locais em /public */
             <img
               src={media.src}
               alt={media.caption ? `${media.title}: ${media.caption}` : media.title}
-              className="max-h-[76vh] w-auto max-w-full rounded-xl border border-line object-contain shadow-[0_40px_120px_-30px_rgba(0,0,0,0.9)]"
+              className={`${aside ? "max-h-[55vh] md:max-h-[80vh]" : "max-h-[76vh]"} w-auto max-w-full rounded-xl border border-line object-contain shadow-[0_40px_120px_-30px_rgba(0,0,0,0.9)]`}
             />
           )}
         </div>
@@ -183,7 +194,8 @@ export function Lightbox({
         )}
 
         <div className="text-center">
-          <p className="text-sm font-bold md:text-base">{media.title}</p>
+          {/* na página do caso o título já está na ficha ao lado */}
+          {!aside && <p className="text-sm font-bold md:text-base">{media.title}</p>}
           {media.caption && (
             <p className="mt-1 text-[11px] uppercase tracking-[0.2em] text-fg-faint">{media.caption}</p>
           )}
@@ -193,6 +205,13 @@ export function Lightbox({
             </p>
           )}
         </div>
+        </div>
+
+        {aside && (
+          <aside data-lenis-prevent className="md:max-h-[86vh] md:overflow-y-auto">
+            {aside}
+          </aside>
+        )}
       </div>
     </div>,
     document.body
