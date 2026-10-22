@@ -1,12 +1,10 @@
 /**
- * Fase da intro, compartilhada entre a camada HTML (Intro, Hero) e o palco
- * WebGL (que lê a fase dentro do useFrame, sem re-render).
- *  pending → as trilhas desenham, chip escondido
- *  boot    → o chip liga no centro da tela
- *  launch  → o chip voa para o topo e o hero entra
+ * Fase da intro, compartilhada entre o terminal (Intro) e o topo (Hero).
+ *  pending → o terminal está digitando
+ *  launch  → a tela do terminal sobe e o nome do topo decodifica
  *  done    → site normal
  */
-export type IntroPhase = "pending" | "boot" | "launch" | "done";
+export type IntroPhase = "pending" | "launch" | "done";
 
 const SEEN_KEY = "gg-intro-seen";
 
@@ -34,7 +32,7 @@ export function getServerIntroPhase(): IntroPhase {
 export function setIntroPhase(next: IntroPhase) {
   if (next === phase) return;
   phase = next;
-  if (next === "boot") {
+  if (next !== "pending") {
     try {
       sessionStorage.setItem(SEEN_KEY, "1");
     } catch {}
@@ -49,29 +47,7 @@ export function subscribeIntro(listener: () => void) {
   };
 }
 
-/** O hero (e o que mais precisar) só entra quando o chip começa a voar. */
+/** O topo só anima quando o terminal começa a sair da frente. */
 export function introReleased(p: IntroPhase = phase) {
   return p === "launch" || p === "done";
-}
-
-// O palco WebGL avisa quando o chip já desenhou de verdade (o vidro leva um
-// tempo para compilar no primeiro carregamento). A intro espera por isso.
-let stageReady = false;
-const readyListeners = new Set<() => void>();
-
-export function markStageReady() {
-  if (stageReady) return;
-  stageReady = true;
-  readyListeners.forEach((l) => l());
-}
-
-export function whenStageReady(cb: () => void) {
-  if (stageReady) {
-    cb();
-    return () => {};
-  }
-  readyListeners.add(cb);
-  return () => {
-    readyListeners.delete(cb);
-  };
 }

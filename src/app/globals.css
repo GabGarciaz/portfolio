@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  /* Preto quente — a cor vem do vidro 3D, não da interface */
+  /* Preto quente: a cor vem só da aurora e dos detalhes furta-cor */
   --bg: #060606;
   --bg-raise: #0d0d0c;
   --bg-card: #111110;
@@ -35,6 +35,7 @@
   --color-line: var(--line);
   --font-sans: var(--font-archivo);
   --font-display: var(--font-anton);
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 }
 
 html {
@@ -75,10 +76,54 @@ body {
   letter-spacing: -0.01em;
 }
 
-/* Quando o palco WebGL desenha o texto, a versão HTML fica invisível mas
-   continua no lugar (layout, SEO, leitor de tela e seleção). */
-.gl-ready [data-gl-text] {
-  color: transparent;
+/* Cursor piscando do terminal */
+.caret::after {
+  content: "";
+  display: inline-block;
+  width: 0.55em;
+  height: 1.05em;
+  margin-left: 0.15em;
+  vertical-align: -0.18em;
+  background: currentColor;
+  animation: caret 1s steps(1) infinite;
+}
+@keyframes caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Aurora do topo: manchas de gradiente que derivam devagar. Só transform,
+   então quem anima é a placa de vídeo, sem repintar a página. */
+.aurora-blob {
+  position: absolute;
+  width: 60vmax;
+  height: 60vmax;
+  border-radius: 50%;
+  will-change: transform;
+}
+@keyframes drift-a {
+  50% {
+    transform: translate3d(12vmax, 6vmax, 0) scale(1.15);
+  }
+}
+@keyframes drift-b {
+  50% {
+    transform: translate3d(-10vmax, -8vmax, 0) scale(0.9);
+  }
+}
+@keyframes drift-c {
+  50% {
+    transform: translate3d(-6vmax, 10vmax, 0) scale(1.1);
+  }
+}
+
+/* Grade de pontos, apagada nas bordas */
+.dot-grid {
+  background-image: radial-gradient(rgba(242, 242, 240, 0.09) 1px, transparent 1px);
+  background-size: 28px 28px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 30%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 30%, transparent 75%);
 }
 
 .text-iris {

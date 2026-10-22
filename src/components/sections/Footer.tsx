@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import { useLenis } from "@/hooks/useLenis";
 import { site } from "@/data/site";
+import { SectionLabel } from "@/components/ui/SectionLabel";
 
 export function Footer() {
   const root = useRef<HTMLElement>(null);
@@ -38,15 +39,14 @@ export function Footer() {
   return (
     <footer ref={root} id="rodape" className="relative z-10 overflow-hidden px-5 pt-24 md:px-12 md:pt-36">
       <div className="mx-auto max-w-[1600px]">
-        <span className="text-[11px] uppercase tracking-[0.3em] text-fg-dim">Contato</span>
+        <SectionLabel index={4}>Contato</SectionLabel>
 
-        {/* o vidro do palco WebGL pousa sobre este título */}
-        <h2 data-gl-anchor="contato" aria-label="Vamos construir" className="mt-6">
+        <h2 aria-label="Vamos construir" className="mt-6">
           <span data-cta-row="0" aria-hidden="true" className="block">
-            <span data-gl-text className="display inline-block text-[24vw] md:text-[17vw]">Vamos</span>
+            <span className="display inline-block text-[24vw] md:text-[17vw]">Vamos</span>
           </span>
           <span data-cta-row="1" aria-hidden="true" className="block text-right">
-            <span data-gl-text className="display inline-block text-[24vw] md:text-[17vw]">Construir</span>
+            <span className="display text-iris inline-block text-[24vw] md:text-[17vw]">Construir</span>
           </span>
         </h2>
 

@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import { capabilities } from "@/data/capabilities";
+import { SectionLabel } from "@/components/ui/SectionLabel";
 
 /** Acordeão de capacidades: uma aberta por vez, cada uma com stack e exemplo real. */
 export function Capabilities() {
@@ -29,7 +30,7 @@ export function Capabilities() {
     <section ref={root} id="capacidades" className="relative z-10 bg-bg px-5 py-24 md:px-12 md:py-36">
       <div className="mx-auto grid max-w-[1600px] gap-12 md:grid-cols-[1fr_2fr] md:gap-20">
         <div>
-          <span className="text-[11px] uppercase tracking-[0.3em] text-fg-dim">O que eu faço</span>
+          <SectionLabel index={3}>O que eu faço</SectionLabel>
           <h2 className="display mt-4 text-[16vw] md:sticky md:top-28 md:text-[6.5vw]">
             Do código
             <br />

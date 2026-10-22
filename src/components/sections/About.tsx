@@ -6,6 +6,7 @@ import { gsap } from "@/lib/gsap";
 import { Reveal } from "@/components/ui/Reveal";
 import { site } from "@/data/site";
 import { projects } from "@/data/projects";
+import { SectionLabel } from "@/components/ui/SectionLabel";
 
 const STATS = [
   { value: String(projects.length).padStart(2, "0"), label: "Projetos no portfólio" },
@@ -79,7 +80,7 @@ export function About() {
   return (
     <section ref={root} id="sobre" className="relative z-10 px-5 py-24 md:px-12 md:py-40">
       <div className="mx-auto max-w-[1600px]">
-        <span className="text-[11px] uppercase tracking-[0.3em] text-fg-dim">Sobre</span>
+        <SectionLabel index={1}>Sobre</SectionLabel>
 
         <h2 data-manifesto aria-label={MANIFESTO.join(" ")} className="display mt-6 text-[10.4vw] md:text-[7.4vw]">
           {MANIFESTO.map((line, i) => (
