@@ -8,27 +8,27 @@ export interface Capability {
 
 export const capabilities: Capability[] = [
   {
-    title: "Desenvolvimento web",
-    text: "Sites e produtos digitais do zero ao ar: páginas rápidas, jornadas com várias etapas, integrações com APIs e checkout. Uso framework quando ajuda e código puro quando é mais leve.",
-    stack: ["Next.js", "React", "Node.js", "JavaScript", "PHP", "PostgreSQL", "Vercel"],
-    example: { label: "Jornada de reserva da InterMed", slug: "intermed-projeto" },
+    title: "Produto e web",
+    text: "Apps e sites do zero ao ar: app instalável com assinatura, jornada de reserva, landing pages de conversão e loja online. Framework quando ajuda, código puro quando é mais leve, e testes automáticos antes de publicar.",
+    stack: ["PHP", "JavaScript", "Next.js", "SQLite", "PostgreSQL", "PWA", "Mercado Pago", "Playwright"],
+    example: { label: "InterMedFit, o app com a Nina", slug: "intermedfit-app" },
   },
   {
-    title: "Automação com IA",
-    text: "Robôs que trabalham sozinhos: leem documentos e lançam no sistema, cuidam dos grupos de WhatsApp, vigiam os anúncios do mercado. Sempre com uma trava humana onde um erro custa caro, e com freio para não queimar o número nem a cota.",
-    stack: ["Python", "API Claude (Anthropic)", "Playwright", "Docker", "GitHub Actions", "WhatsApp"],
-    example: { label: "Robôs de WhatsApp da InterMed", slug: "intermed-robos" },
+    title: "Automação e agentes de IA",
+    text: "Assistentes de IA com ferramentas e voz, robôs de WhatsApp e leitura de documentos. Vários agentes trabalhando em paralelo com o Claude Code, sempre com aprovação humana e trilha de auditoria onde um erro custa caro.",
+    stack: ["API Claude", "Claude Code", "Python", "Docker", "Evolution API", "Cron e systemd"],
+    example: { label: "Cometa, o assistente de marketing", slug: "intermed-cometa" },
   },
   {
-    title: "Tráfego e dados",
-    text: "Campanhas no Meta e no Google ligadas a landing pages e a um painel próprio que cruza anúncios, leads e conversas. Cada anúncio recebe um veredito: manter, pausar ou escalar.",
-    stack: ["Meta Ads", "Google Ads", "API do Meta", "Landing pages", "Dashboards"],
-    example: { label: "Dashboard de tráfego", slug: "intermed-trafego" },
+    title: "Marketing e tráfego",
+    text: "Lançamento de produto digital e funil de assinatura, campanhas em grupos de WhatsApp com lançamento por etapas, Meta Ads e atribuição de vendas por anúncio. Tudo dentro das regras do CFM e da LGPD.",
+    stack: ["Meta Ads", "Meta Graph API", "Google Sheets", "Landing pages", "Calendário editorial", "CFM e LGPD"],
+    example: { label: "Tráfego e atribuição de vendas", slug: "intermed-trafego" },
   },
   {
-    title: "Design e vídeo",
-    text: "Identidade visual, criativos de campanha e vídeos para redes sociais, incluindo apresentadora gerada por IA. Peças feitas para converter, não só para ficar bonitas.",
-    stack: ["Criativos em código", "CapCut", "Avatar com IA", "Identidade visual", "Publicidade médica"],
-    example: { label: "Campanha de hidrolipo", slug: "intermed-campanha-hidrolipo" },
+    title: "Conteúdo e motion",
+    text: "Motion graphics feitos por código, vídeo com IA e mascote animada, 3D na web com versão leve no celular. Roteiro de reels, ganchos, carrossel e legenda pensados para o algoritmo e para a regra de saúde.",
+    stack: ["GSAP", "FFmpeg", "Three.js", "Veo e Flow", "edge-tts", "Figma e Canva"],
+    example: { label: "Fábrica de vídeos com IA", slug: "intermed-motion" },
   },
 ];

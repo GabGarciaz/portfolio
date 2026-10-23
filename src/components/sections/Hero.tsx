@@ -130,7 +130,7 @@ export function Hero() {
           <span>Rio de Janeiro · BR</span>
         </div>
 
-        <h1 className="sr-only">Gabriel Medeiros Garcia, desenvolvedor, automação com IA e design</h1>
+        <h1 className="sr-only">Gabriel Medeiros Garcia, marketing e produto digital com IA</h1>
         <div aria-hidden="true" className="select-none">
           {[site.name.first, site.name.last.replace(".", "")].map((word, i) => (
             <div key={word} data-hero-row={i} className={i === 1 ? "text-right" : ""}>
@@ -146,8 +146,8 @@ export function Hero() {
         <div className="mt-5 flex flex-col gap-6 md:mt-7 md:flex-row md:items-end md:justify-between">
           <div data-hero-fade className="max-w-md">
             <p className="text-sm leading-relaxed text-fg-dim md:text-base">
-              Desenvolvedor que automatiza processos com inteligência artificial, constrói software de ponta a
-              ponta e desenha a marca que o envolve.
+              Marketing e produto digital com IA. Do app ao anúncio, do robô ao vídeo: eu projeto, construo
+              com IA e coloco no ar.
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               <a

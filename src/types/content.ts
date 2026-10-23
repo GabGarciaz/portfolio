@@ -13,7 +13,7 @@ export interface SiteConfig {
   };
 }
 
-export type ProjectKind = "web" | "automacao" | "design";
+export type ProjectKind = "web" | "automacao" | "marketing";
 
 export interface Project {
   slug: string;
@@ -31,7 +31,7 @@ export interface Project {
   /** O que tem de engenharia por trás, em frases curtas (página do caso). */
   highlights?: string[];
   /** Telas extras, navegáveis no lightbox depois da capa. */
-  gallery?: { src: string; caption: string }[];
+  gallery?: { src: string; caption: string; video?: boolean }[];
   href?: string;
 }
 

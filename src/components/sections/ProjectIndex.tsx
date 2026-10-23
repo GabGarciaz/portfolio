@@ -10,15 +10,15 @@ import type { Project, ProjectKind } from "@/types/content";
 
 const FILTERS: { key: ProjectKind | "todos"; label: string }[] = [
   { key: "todos", label: "Todos" },
-  { key: "web", label: "Web" },
-  { key: "automacao", label: "Automação" },
-  { key: "design", label: "Design e vídeo" },
+  { key: "web", label: "Produto e web" },
+  { key: "automacao", label: "Automação e IA" },
+  { key: "marketing", label: "Marketing e conteúdo" },
 ];
 
 const KIND_LABEL: Record<ProjectKind, string> = {
-  web: "Web",
-  automacao: "Automação",
-  design: "Design e vídeo",
+  web: "Produto e web",
+  automacao: "Automação e IA",
+  marketing: "Marketing e conteúdo",
 };
 
 // Ritmo da grade (6 colunas no desktop): dois cards largos, três médios, e repete.
@@ -280,7 +280,7 @@ function toMedia(project: Project): LightboxMedia[] {
     items.push({ type: "image", src: project.thumbnailSrc, title: project.name, caption: project.date });
   }
   for (const g of project.gallery ?? []) {
-    items.push({ type: "image", src: g.src, title: project.name, caption: g.caption });
+    items.push({ type: g.video ? "video" : "image", src: g.src, title: project.name, caption: g.caption });
   }
   return items;
 }

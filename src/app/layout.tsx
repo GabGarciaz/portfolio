@@ -26,9 +26,9 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Gabriel Medeiros Garcia — Desenvolvedor",
+  title: "Gabriel Medeiros Garcia · Marketing e produto digital com IA",
   description:
-    "Portfólio de Gabriel Medeiros Garcia: automações com IA, desenvolvimento de software, tráfego, marketing e design.",
+    "Portfólio de Gabriel Medeiros Garcia: produtos digitais, automações e agentes de IA, tráfego pago, atribuição de vendas e conteúdo.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

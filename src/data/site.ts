@@ -18,6 +18,6 @@ export const site: SiteConfig = {
     { label: "Contato", href: "#rodape" },
   ],
   about: {
-    bio: "Meu nome é Gabriel Medeiros Garcia. Curso Análise e Desenvolvimento de Sistemas e atuo com automações usando inteligência artificial, desenvolvimento de software, marketing e design, do backend em Python e Node.js até a identidade visual do produto final. Hoje trabalho na InterMed Day Hospital da Plástica, cuidando do site, das automações e do tráfego.",
+    bio: "Meu nome é Gabriel Medeiros Garcia. Trabalho com marketing e produto digital na InterMed Day Hospital da Plástica e construo os próprios produtos com inteligência artificial: projeto, coordeno a construção com IA e coloco no ar. Lancei um app de emagrecimento com assistente de IA, um painel de marketing com assistente de voz, robôs de WhatsApp e a atribuição de vendas por anúncio, sempre dentro das regras de comunicação em saúde. Curso Análise e Desenvolvimento de Sistemas.",
   },
 };
