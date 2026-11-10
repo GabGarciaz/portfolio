@@ -19,7 +19,7 @@ export const projects: Project[] = [
     stack: ["PHP 8", "SQLite", "JavaScript", "PWA", "API Claude", "Mercado Pago", "Playwright"],
     thumbnailColor: "#e6f0ea",
     thumbnailSrc: "/images/projects/intermedfit/landing.webp",
-    group: "InterMed · 01 / 07",
+    group: "InterMed · 01 / 06",
     href: "https://intermedspa.com.br/intermedfit/",
     gallery: [
       { src: "/images/projects/intermedfit/hoje.webp", caption: "Tela Hoje, com usuária de exemplo" },
@@ -33,21 +33,32 @@ export const projects: Project[] = [
   {
     slug: "intermed-cometa",
     kind: "automacao",
-    name: "InterMed · Cometa",
-    date: "Marketing com IA e voz",
+    name: "Cometa",
+    date: "Marketing com IA · produto próprio",
     summary:
-      "Painel de marketing que reúne todos os perfis da empresa e um assistente de IA com voz, o Cometa, no estilo do Jarvis. Ele lê os números, pesquisa tendências, escreve roteiros, manda vídeo para produção e agenda posts. Feito para uma equipe que não programa ter tudo num lugar só, sem trocar de ferramenta.",
+      "Assistente de marketing com IA que começou como o painel da InterMed e virou um app próprio. A Cometa conversa por texto ou voz, monta a pauta, cria a arte, agenda e publica nas redes e mostra os números de cada uma. Feito para quem não é de marketing nem de tecnologia: o início tem três botões grandes, criar post, pedir à Cometa e criar arte.",
     highlights: [
-      "Instagram, TikTok, YouTube e Facebook num painel: detalhe por post, mapa de calor do melhor dia e horário e previsão de seguidores com faixa de certeza",
-      "Voz: escuta pelo microfone, responde falando, e um núcleo 3D de partículas reage a quem fala",
-      "IA com ferramentas: lê o painel, pesquisa na internet, escreve roteiros e monta cronogramas",
-      "Base de conhecimento da empresa inteira; tráfego e vendas entram só em totais",
-      "Nada é publicado sem um administrador aprovar, por clique ou por voz, com trilha de auditoria e proteção contra post duplicado",
+      "Publica e agenda no Instagram, Facebook, TikTok e YouTube, com calendário de arrastar e soltar, melhor horário e datas comemorativas",
+      "Estúdio de artes com IA, relatório mensal em PDF e aprovação do cliente por link",
+      "Ao conectar um Instagram, a Cometa estuda a conta e guarda o perfil da marca para usar em tudo",
+      "Um agente no computador acha fotos e arquivos para a Cometa; pedido no PC do dono só sai com a aprovação dele",
+      "Na versão da InterMed, edita vídeo no servidor e desenha ilustrações seguindo a regra de comunicação em saúde",
+      "Nada é publicado sem aprovação, com trilha de auditoria",
     ],
-    stack: ["PHP", "JavaScript", "Three.js", "Web Speech API", "API Claude", "Meta Graph API"],
-    thumbnailColor: "#0a0a0c",
-    thumbnailSrc: "/images/projects/intermed/cometa.webp",
-    group: "InterMed · 02 / 07",
+    stack: ["Next.js", "Supabase", "API Claude", "Meta Graph API", "TikTok e YouTube", "Remotion"],
+    thumbnailColor: "#0b0a1a",
+    thumbnailSrc: "/images/projects/cometa/inicio.webp",
+    gallery: [
+      { src: "/images/projects/cometa/conversa.webp", caption: "Pedindo os posts da semana à Cometa (conta de demonstração)" },
+      { src: "/images/projects/cometa/calendario.webp", caption: "Calendário com melhores horários e datas comemorativas" },
+      { src: "/images/projects/cometa/criar-arte.webp", caption: "Estúdio de artes" },
+      { src: "/images/projects/cometa/nova-publicacao.webp", caption: "Nova publicação em quatro passos" },
+      { src: "/images/projects/cometa/redes.webp", caption: "Redes conectadas e agenda de publicações" },
+      { src: "/images/projects/cometa/relatorio.webp", caption: "Relatório do mês, pronto para baixar em PDF" },
+      { src: "/images/projects/cometa/inicio-celular.webp", caption: "No celular" },
+      { src: "/images/projects/cometa/login.webp", caption: "Tela de entrada" },
+      { src: "/images/projects/intermed/cometa.webp", caption: "Como o assistente funciona na InterMed" },
+    ],
   },
   {
     slug: "intermed-trafego",
@@ -66,7 +77,7 @@ export const projects: Project[] = [
     stack: ["PHP", "Python", "Meta Marketing API", "Google Sheets", "API Claude", "Cron"],
     thumbnailColor: "#14110d",
     thumbnailSrc: "/images/projects/intermed/dashboard-regioes.webp",
-    group: "InterMed · 03 / 07",
+    group: "InterMed · 02 / 06",
     gallery: [
       { src: "/images/projects/intermed/dashboard-anuncios.webp", caption: "Anúncios do dia, com o veredito de cada um" },
     ],
@@ -89,7 +100,7 @@ export const projects: Project[] = [
     stack: ["Python", "Docker", "Evolution API", "VPS", "PHP", "WhatsApp"],
     thumbnailColor: "#0a0a0c",
     thumbnailSrc: "/images/projects/intermed/robo-arquitetura.webp",
-    group: "InterMed · 04 / 07",
+    group: "InterMed · 03 / 06",
     gallery: [
       { src: "/images/projects/intermed/robo-reativacao.webp", caption: "Convites para quem sumiu, do atendimento ao envio" },
     ],
@@ -111,7 +122,7 @@ export const projects: Project[] = [
     stack: ["GSAP", "Playwright", "FFmpeg", "Python", "edge-tts", "API Claude"],
     thumbnailColor: "#0a0a0c",
     thumbnailSrc: "/images/projects/intermed/motion.webp",
-    group: "InterMed · 05 / 07",
+    group: "InterMed · 04 / 06",
     gallery: [
       { src: "/images/projects/intermed/nina-motion.mp4", caption: "A Nina vem até você, feito pela fábrica", video: true },
       { src: "/images/projects/intermedfit/exercicio-ia.mp4", caption: "Exercício gerado por IA para o app", video: true },
@@ -136,7 +147,7 @@ export const projects: Project[] = [
     stack: ["HTML", "CSS", "JavaScript", "PHP", "Three.js", "API Feegow", "SEO"],
     thumbnailColor: "#f4ece2",
     thumbnailSrc: "/images/projects/intermed/home.webp",
-    group: "InterMed · 06 / 07",
+    group: "InterMed · 05 / 06",
     gallery: [
       { src: "/images/projects/intermed/home-outubro-rosa.webp", caption: "Página inicial com o banner do Outubro Rosa" },
       { src: "/images/projects/intermed/home-mobile.webp", caption: "Página inicial no celular" },
@@ -158,10 +169,11 @@ export const projects: Project[] = [
     name: "InterMed · Campanha de hidrolipo",
     date: "Lançamento por WhatsApp",
     summary:
-      "Campanha para levar gente ao grupo Projeto Hidrolipo no WhatsApp, com lançamento por etapas: aquecimento, a condição revelada só dentro do grupo e o dia de avaliação. Teve cronograma de 6 semanas com Outubro Rosa e Black Friday, reativação da base de leads e um grupo para quem começou o pagamento e não terminou.",
+      "Campanha para levar gente ao grupo Projeto Hidrolipo no WhatsApp, com lançamento por etapas: aquecimento, a condição revelada só dentro do grupo e o dia de avaliação. Teve cronograma de 6 semanas com Outubro Rosa e Black Friday, reativação da base de leads, uma live de lançamento e uma página de reserva própria.",
     highlights: [
       "Cronograma de 6 semanas com 30 posts e 8 enquetes por grupo",
       "Lançamento por etapas: aquecimento, revelação só no grupo e dia de avaliação",
+      "Página de reserva com os combos e um aviso de reservas que lê o número real do servidor, sem nome e sem compra inventada",
       "Criativos de feed, story e cartão impresso com QR code, feitos em série por um sistema de artes em código",
       "Fotos reais do hospital, sem antes e depois e sem preço nas peças",
       "Guia de comunicação em saúde aplicado a tudo: sem promessa de resultado, sem superlativo e sem escassez inventada",
@@ -169,7 +181,7 @@ export const projects: Project[] = [
     stack: ["WhatsApp", "Meta Ads", "Copy", "Design em código", "Regras do CFM"],
     thumbnailColor: "#0b0a08",
     thumbnailSrc: "/images/projects/intermed/hidro-novembro-feed.webp",
-    group: "InterMed · 07 / 07",
+    group: "InterMed · 06 / 06",
     gallery: [
       { src: "/images/projects/intermed/hidro-hospital-feed.webp", caption: "Feed: o hospital" },
       { src: "/images/projects/intermed/hidro-grupo-feed.webp", caption: "Feed: o grupo no WhatsApp" },
@@ -182,7 +194,7 @@ export const projects: Project[] = [
     name: "Terê Sorvetes · Loja e financeiro",
     date: "E-commerce em produção",
     summary:
-      "Loja online da sorveteria da família, no ar e recebendo pedidos: o cliente monta o açaí, acompanha o pedido e vê o próprio histórico sem criar conta, e a equipe tem painel com pedidos em tempo real. Depois veio o financeiro, que substituiu a planilha de caixa: o dono lança entrada ou saída em poucos toques e vê quanto sobrou no dia, no mês e no ano.",
+      "Loja online da sorveteria da família, no ar e recebendo pedidos: o cliente monta o açaí, acompanha o pedido e vê o próprio histórico sem criar conta, e a equipe tem painel com pedidos em tempo real. Depois veio o financeiro, que substituiu a planilha de caixa, e a mesma base está virando o site da Point do Açaí, a segunda loja.",
     highlights: [
       "Frete pelo caminho das ruas, não em linha reta: o número da casa vira coordenada e a rota sai numa consulta só",
       "CEP com três fontes em sequência e trava para CEP de outro estado ou inexistente",
@@ -190,6 +202,7 @@ export const projects: Project[] = [
       "Histórico do cliente sem login e sem expor o pedido de ninguém",
       "Financeiro com dinheiro sempre em centavos inteiros e banco que só o servidor enxerga",
       "Contas do financeiro com testes automatizados",
+      "Point do Açaí: cópia separada, com banco e painel próprios para uma loja nunca derrubar a outra, e um caixa de balcão com vendas, sangria e fechamento",
     ],
     stack: ["Next.js", "Node.js", "PostgreSQL", "Supabase", "Mapas e rotas", "PWA"],
     thumbnailColor: "#4c1d6b",
