@@ -16,7 +16,7 @@ export const capabilities: Capability[] = [
   {
     title: "Automação e agentes de IA",
     text: "Assistentes de IA com ferramentas e voz, robôs de WhatsApp e leitura de documentos. Vários agentes trabalhando em paralelo com o Claude Code, sempre com aprovação humana e trilha de auditoria onde um erro custa caro.",
-    stack: ["API Claude", "Claude Code", "Python", "Docker", "Evolution API", "Cron e systemd"],
+    stack: ["API Claude", "Claude Code", "n8n e webhooks", "Python", "Docker", "Evolution API", "Cron e systemd"],
     example: { label: "Cometa, o assistente de marketing", slug: "intermed-cometa" },
   },
   {

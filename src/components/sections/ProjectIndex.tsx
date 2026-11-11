@@ -21,8 +21,22 @@ const KIND_LABEL: Record<ProjectKind, string> = {
   marketing: "Marketing e conteúdo",
 };
 
-// Ritmo da grade (6 colunas no desktop): dois cards largos, três médios, e repete.
-const SPANS = ["lg:col-span-3", "lg:col-span-3", "lg:col-span-2", "lg:col-span-2", "lg:col-span-2"];
+/**
+ * Ritmo da grade (6 colunas no desktop): uma linha de dois cards largos, uma de
+ * três médios, e repete. Quando sobram menos cards que a linha pede (o fim da
+ * lista ou um filtro), os que sobraram esticam para fechar a linha sem buraco.
+ */
+function cardSpan(i: number, total: number): { cls: string; full: boolean } {
+  const pos = i % 5;
+  const dupla = pos < 2;
+  const inicioDaLinha = i - (dupla ? pos : pos - 2);
+  const naLinha = Math.min(dupla ? 2 : 3, total - inicioDaLinha);
+  // no tablet (2 colunas) o último card de uma lista ímpar ocupa a linha toda.
+  // Classes escritas por inteiro: o Tailwind só gera o que encontra literal no código.
+  const tablet = total % 2 === 1 && i === total - 1 ? "md:col-span-2" : "";
+  const lg = naLinha === 1 ? "lg:col-span-6" : naLinha === 2 ? "lg:col-span-3" : "lg:col-span-2";
+  return { cls: [lg, tablet].filter(Boolean).join(" "), full: naLinha === 1 };
+}
 
 /**
  * Projetos em grade, com a capa sempre à vista e o número de cada um.
@@ -124,11 +138,14 @@ export function ProjectIndex() {
         </div>
 
         <ul className="mt-12 grid gap-4 md:mt-16 md:grid-cols-2 lg:grid-cols-6 lg:gap-5">
-          {list.map((p, i) => (
-            <li key={p.slug} data-card className={SPANS[i % SPANS.length]}>
-              <ProjectCard project={p} onOpen={() => setZoomed(p)} />
-            </li>
-          ))}
+          {list.map((p, i) => {
+            const span = cardSpan(i, list.length);
+            return (
+              <li key={p.slug} data-card className={span.cls}>
+                <ProjectCard project={p} full={span.full} onOpen={() => setZoomed(p)} />
+              </li>
+            );
+          })}
         </ul>
       </div>
 
@@ -144,7 +161,7 @@ export function ProjectIndex() {
   );
 }
 
-function ProjectCard({ project: p, onOpen }: { project: Project; onOpen: () => void }) {
+function ProjectCard({ project: p, full, onOpen }: { project: Project; full: boolean; onOpen: () => void }) {
   const n = projects.indexOf(p) + 1;
   return (
     <button
@@ -152,7 +169,8 @@ function ProjectCard({ project: p, onOpen }: { project: Project; onOpen: () => v
       onClick={onOpen}
       className="group relative flex h-full w-full flex-col overflow-hidden rounded-2xl border border-line bg-bg-card text-left transition-colors duration-500 hover:border-fg/30"
     >
-      <span className="relative block aspect-16/10 overflow-hidden">
+      {/* o card que ocupa a linha inteira fica mais baixo, senão a capa vira um muro */}
+      <span className={`relative block overflow-hidden ${full ? "aspect-16/10 lg:aspect-21/9" : "aspect-16/10"}`}>
         <Cover
           project={p}
           className="h-full w-full object-cover object-top transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.045]"
